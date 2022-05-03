@@ -1,0 +1,56 @@
+<!--pages/matchInfo/matchInfo.wxml-->
+<view>
+    <view class="mathc-info-show">
+      
+    </view>
+
+
+
+<view class="match-label">
+    <text>赛事详情</text>
+  </view>
+  <view class="match" >
+      <van-row custom-class="match-lable-row"></van-row>
+      <van-row custom-class="match-info" wx:for="{{marchSetInfo.matchList}}" wx:key="*this">
+        <navigator url="/pages/matchGame/matchGame" hover-class="none">
+          <van-row>
+            <van-col  custom-class="match-info-lable">{{item.matchTime}} {{item.matchName}} {{item.matchLabel}}</van-col>
+          </van-row>
+          <van-row>
+              <van-col  custom-class="match-info-user-left">
+                <text wx:if="{{item.matchType === 1}}">{{item.redUserName}}</text>
+                <text wx:else>{{item.redUserName}}&{{item.redPartName}}</text>
+              </van-col>
+              <van-col  custom-class="match-info-vs">
+                <image bindtap="bindViewTap" class="user-avatar" src="{{item.redAvatarUrl}}" mode="cover"></image>
+              </van-col>
+              <van-col  custom-class="match-info-vs">
+                <text style="font-weight:bold;">{{item.redWinSetNum}}</text>
+                <text style="color:#4c4c4c"> - </text> 
+                <text style="font-weight:bold;">{{item.blueWinSetNum}}</text>
+              </van-col>
+              <van-col  custom-class="match-info-vs">
+                <image bindtap="bindViewTap" class="user-avatar" src="{{item.blueAvatarUrl}}" mode="cover"></image>
+              </van-col>
+              <van-col  custom-class="match-info-user-right">
+                <text wx:if="{{item.matchType === 1}}">{{item.blueUserName}}</text>
+                <text wx:else>{{item.blueUserName}}&{{item.bluePartName}}</text>
+              </van-col>
+          </van-row>
+          <van-row>
+            <van-col  custom-class="match-info-lable match-status-{{item.matchStatus}}"></van-col>
+          </van-row>
+          <van-row>
+            <van-divider custom-style="padding:3px;margin:0px"/>
+          </van-row>
+        </navigator>
+      </van-row>
+  </view>
+
+
+
+</view>
+
+
+
+

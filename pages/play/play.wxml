@@ -1,0 +1,109 @@
+<!--pages/play/play.wxml-->
+<view class="container">
+
+    <view class="box-all box-flex-row">
+          <view class="user-box">
+              <view class="user-box-single">
+                  <view class="user-box-image">
+                    <image bindtap="bindViewTap" class="user-avatar-max" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                  </view>
+                  <van-divider custom-style="padding:3px;margin:0px"/>
+                  <view class="user-box-name">
+                    <text class="font-size-title">{{userInfo.nickName}}</text>
+                  </view>
+              </view>
+              <view class="user-box-single" wx:if="{{playInfo.matchType == 2}}" bindtap="showAddPlayer">
+                  <view class="user-box-image">
+                    <image bindtap="bindViewTap" class="user-avatar-max" src="{{playInfo.redPlayInfo.redPartAvatarUrl ? playInfo.redPlayInfo.redPartAvatarUrl : '/image/avator/default_avator.jpeg'}}" mode="cover"></image>
+                  </view>
+                  <van-divider custom-style="padding:3px;margin:0px"/>
+                  <view class="user-box-name">
+                      <text class="font-size-title">{{playInfo.redPlayInfo.redPartName ? playInfo.redPlayInfo.redPartName : '点击添加'}}</text>
+                  </view>
+              </view>
+
+          </view>
+          <view class="user-box-vs-{{playInfo.matchType}}">
+                VS
+          </view>
+          <view class="user-box">
+              <view class="user-box-single" bindtap="showAddPlayer">
+
+                  <view class="user-box-image">
+                    <image bindtap="bindViewTap" class="user-avatar-max" src="{{playInfo.bluePlayInfo.blueAvatarUrl ? playInfo.bluePlayInfo.blueAvatarUrl : '/image/avator/default_avator.jpeg'}}"  mode="cover"></image>
+                  </view>
+                  <van-divider custom-style="padding:3px;margin:0px"/>
+                  <view class="user-box-name">
+                    <text class="font-size-title">{{playInfo.bluePlayInfo.blueName ? playInfo.bluePlayInfo.blueName : '点击添加'}}</text>
+                  </view>
+              </view>
+
+              <view class="user-box-single" wx:if="{{playInfo.matchType == 2}}" bindtap="showAddPlayer">
+                <view class="user-box-image">
+                    <image bindtap="bindViewTap" class="user-avatar-max" src="{{playInfo.bluePlayInfo.bluePartAvatarUrl ? playInfo.bluePlayInfo.bluePartAvatarUrl : '/image/avator/default_avator.jpeg'}}"  mode="cover"></image>
+                  </view>
+                  <van-divider custom-style="padding:3px;margin:0px"/>
+                  <view class="user-box-name">
+                    <text class="font-size-title">{{playInfo.bluePlayInfo.bluePartName ? playInfo.bluePlayInfo.bluePartName : '点击添加'}}</text>
+                  </view>
+              </view>
+          </view>
+    </view>
+
+    <view class=" box-all">
+        <view class="box-flex-row font-size-title playerTitle">
+          <view style="width:30%"></view>
+          <view style="width:25%" >
+              {{userInfo.nickName}}
+              <text wx:if="{{playInfo.matchType == 2}}"> & {{playInfo.redPlayInfo.redPartName ? playInfo.redPlayInfo.redPartName : '--'}}</text>
+          </view>
+          <view style="width:10%">  </view>
+          <view style="width:25%">
+              <text>{{playInfo.bluePlayInfo.blueName ? playInfo.bluePlayInfo.blueName : '--'}}</text>
+              <text wx:if="{{playInfo.matchType == 2}}"> & {{playInfo.bluePlayInfo.bluePartName ? playInfo.bluePlayInfo.bluePartName : '--'}}</text>
+          </view>
+        </view>  
+
+        <view class="box-flex-row player-score-box">
+            <view style="width:30%">第 1 盘</view>
+            <view style="width:25%">
+              <van-field
+                  value="{{ matchInfo.redPartName }}"
+                  data-key="matchInfo.redPartName" 
+                       
+               />
+            </view>
+            <view style="width:10%"> - </view>
+            <view style="width:25%">3</view>
+        </view>
+
+        <view class="box-flex-row player-score-box">
+            <view style="width:30%">第 2 盘</view>
+            <view style="width:25%">6</view>
+            <view style="width:10%"> - </view>
+            <view style="width:25%">3</view>
+        </view>
+
+        <view class="add-player-button">
+            <button type="primary"> 添加数据</button>
+        </view>
+        
+    </view>
+
+</view>
+
+<view>
+  <van-popup show="{{ show.addPlayer }}"  custom-style="padding: 20px" bind:close="hideAddPlayer">
+    <view class="add-player-container">
+      <view >
+          <image class="add-player-ar-code" src="/image/demo-qr.jpg" mode="cover"></image>
+      </view>
+      <view class="add—player-text">
+        <text class="font-size-title">微信扫码加入</text>
+      </view>
+      <view>
+          <navigator class="active-color">或 从好友中添加</navigator>
+      </view>
+    </view>
+  </van-popup>
+</view>

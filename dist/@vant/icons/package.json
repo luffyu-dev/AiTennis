@@ -1,0 +1,59 @@
+{
+  "_from": "@vant/icons@^1.6.0",
+  "_id": "@vant/icons@1.6.0",
+  "_inBundle": false,
+  "_integrity": "sha1-Pbfrf5Y/UaKghnZyDVr5xMNRL+s=",
+  "_location": "/@vant/icons",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@vant/icons@^1.6.0",
+    "name": "@vant/icons",
+    "escapedName": "@vant%2ficons",
+    "scope": "@vant",
+    "rawSpec": "^1.6.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.6.0"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.nlark.com/@vant/icons/download/@vant/icons-1.6.0.tgz?cache=0&sync_timestamp=1621321922501&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.6.0.tgz",
+  "_shasum": "3db7eb7f963f51a2a08676720d5af9c4c3512feb",
+  "_spec": "@vant/icons@^1.6.0",
+  "_where": "/Users/luffyu/WeChatProjects/vant-weapp",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "vant icons",
+  "devDependencies": {
+    "release-it": "^13.6.2"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "main": "./src/config.js",
+  "name": "@vant/icons",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "chore: release @vant/icons ${version}",
+      "addUntrackedFiles": true,
+      "requireCleanWorkingDir": false
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youzan/vant/tree/dev/packages/vant-icons"
+  },
+  "scripts": {
+    "release": "release-it"
+  },
+  "types": "./src/config.d.ts",
+  "version": "1.6.0"
+}

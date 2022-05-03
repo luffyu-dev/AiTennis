@@ -1,0 +1,97 @@
+<demo-block title="添加基础信息">
+  <van-cell-group>
+    <van-field
+      value="{{ matchInfo.matchName }}"
+      label="赛事名称"
+      placeholder="请输入赛事名称"
+      clearable
+      right-icon="question-o"
+      right-icon-class="custom-icon"
+      required
+    />
+
+    <van-field
+      value="{{ matchInfo.fieldName }}"
+      label="赛事场地"
+      placeholder="请输入场地信息"
+      clearable
+      right-icon="question-o"
+      right-icon-class="custom-icon"
+      required
+    />
+
+    <van-field
+      value="{{  matchInfo.matchDate }}"
+      label="比赛日期"
+      placeholder="请输入场地信息"
+      clearable
+      right-icon="question-o"
+      right-icon-class="custom-icon"
+      required
+    />
+  </van-cell-group>
+</demo-block>
+
+
+<demo-block title="规则设置" >
+  
+  <van-radio-group value="{{ matchInfo.matchType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+    <van-radio name="1">单打</van-radio>
+    <van-radio name="2">双打</van-radio>
+  </van-radio-group>
+
+  <van-radio-group value="{{ matchInfo.matchGameNum }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+    <van-radio name="4">4局</van-radio>
+    <van-radio name="6">6局</van-radio>
+  </van-radio-group>
+
+  <van-radio-group value="{{ matchInfo.matchBallType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+    <van-radio name="1">金球球</van-radio>
+    <van-radio name="2">占先</van-radio>
+  </van-radio-group>
+
+  <van-radio-group value="{{ matchInfo.matchBallType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+    <van-radio name="1">抢七</van-radio>
+    <van-radio name="2">不抢七</van-radio>
+  </van-radio-group>
+
+</demo-block>
+
+
+<demo-block title="添加选手" padding>
+  <van-uploader
+    name="2"
+    file-list="{{ fileList2 }}"
+    multiple
+    bind:after-read="afterRead"
+    bind:delete="delete"
+    bind:click-preview="clickPreview"
+  />
+</demo-block>
+
+
+<demo-block title="选手分组模式">
+  <van-radio-group value="{{ matchInfo.matchBallType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+    <van-radio name="1">指定组队</van-radio>
+    <van-radio name="2">随机组队</van-radio>
+  </van-radio-group>
+</demo-block>
+
+
+<demo-block title="比赛简介">
+  <van-cell-group>
+    <van-field
+      value="{{ matchInfo.remark }}"
+      label="简介"
+      type="textarea"
+      placeholder="请输入留言"
+      rows="1"
+      autosize
+      border="{{ false }}"
+    />
+  </van-cell-group>
+</demo-block>
+
+<view>
+  <button type="primary" class="button-box" bindtap="submitMatch">保存</button>
+</view>

@@ -1,0 +1,74 @@
+<!--pages/homeAt/homeAt.wxml-->
+<view class="content-info-bg top-bg-container"/>
+
+<swiper class="swiper-container" indicator-dots="true" autoplay="false" interval="5000" >
+    <swiper-item>
+        <image src="/image/home/home1.jpg" class="swiper-image" mode="scaleToFill"></image>
+        <!-- <view class="swiper-info-title-container">
+            <view style="font-size:40rpx">徐徐的网球球年终比赛</view>
+        </view> -->
+    </swiper-item>
+    <swiper-item>
+      <image src="/image/home/home2.jpeg" class="swiper-image" mode="scaleToFill"></image>
+    </swiper-item>
+</swiper>
+
+<scroll-view scroll-y  class="scroll-y-container" enhanced="true"  showScrollbar="false" >
+  <view class="home-middle-container">
+    <view class="box-card">
+      <view class="match-active-box">
+            <navigator  url="/pages/matchGame/matchGame" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo-4.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">邀约训练</view>
+            </navigator>
+
+            <navigator url="/pages/play/play" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo-1.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">技巧提升</view>
+            </navigator>
+
+            <navigator  url="/pages/matchGame/matchGame" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo-3.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">场地预约</view>
+            </navigator>
+
+            <navigator  url="/pages/addMatch/addMatch" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo-2.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">寻找教练</view>
+            </navigator>
+        </view>
+    </view>
+    <view class="box-card">
+      <view class="box-card-title">AT训练时间(h)</view>
+      <view class="chart-container">
+          <canvas canvas-id="lineCanvas" disable-scroll="true" class="chart-canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      </view>
+    </view>
+    <view class="box-card">
+      <view class="box-card-title">推荐课程</view>
+      <view>
+          
+      
+      </view>
+    </view>
+    <view class="box-card"></view>
+    <view class="box-card"></view>
+
+    <view class="box-card"></view>
+
+    <view class="box-card"></view>
+
+    <view class="box-card"></view>
+
+  </view>   
+</scroll-view>
+
+
+<!-- <scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
+  <view class="box-card">
+      邀约训练
+      学习视频
+      找球场
+      找教练
+  </view>
+</scroll-view> -->

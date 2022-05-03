@@ -1,0 +1,72 @@
+/* pages/play/play.wxss */
+
+
+.user-box{
+  font-size: 20rpx;
+  width: 325rpx;
+  min-height: 300rpx;
+  text-align: center;
+}
+.user-box-vs-1{
+  font-size: 30rpx;
+  width: 60rpx;
+  min-height: 300rpx;
+  line-height: 300rpx;
+  text-align: center;
+
+}
+.user-box-vs-2{
+  font-size: 30rpx;
+  width: 60rpx;
+  min-height: 600rpx;
+  line-height: 600rpx;
+  text-align: center;
+
+}
+
+.user-box-single{
+    width: 335;
+    height: 280rpx;
+    padding: 10rpx;
+}
+
+.user-box-image{
+  padding: 10rpx;
+  height: 170rpx;
+}
+.user-box-name{
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.add-player-container{
+  width: 400rpx;
+  height: 440rpx;
+  text-align: center;
+}
+
+.add-player-ar-code{
+  margin-left: 10rpx;
+  width: 380rpx;
+  height: 380rpx;
+}
+
+.playerTitle{
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.player-score-box{
+  height: 30rpx;
+  line-height: 30prx;
+  text-align: center;
+  padding: 40rpx 0;
+  font-size: 30rpx;
+  border-bottom: 1px solid #e7e7e7;
+}
+.add-player-button{
+  margin-top: 20rpx;
+}

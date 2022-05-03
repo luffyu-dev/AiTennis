@@ -1,0 +1,153 @@
+<!--pages/match/match.wxml-->
+<view class="content-info-bg top-bg-container"/>
+
+<scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
+  <view >
+    <view class="box-card">
+        <view class="box-card-title">训练/赛事</view>
+        <view class="match-active-box">
+            <!-- 比赛的社交互动。用去发起邀请 -->
+            <navigator url="/pages/play/play" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_double.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">邀约训练</view>
+            </navigator>
+
+            <!-- <navigator  url="/pages/matchGame/matchGame" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_double.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">双打</view>
+            </navigator> -->
+
+            <navigator  url="/pages/addMatch/addMatch" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_match.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">创建比赛</view>
+            </navigator>
+
+            <navigator  url="/pages/matchGame/matchGame" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_yy.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">记分工具</view>
+            </navigator>
+
+        </view>
+    </view>
+
+
+    <!-- 我的比赛 -->
+    <view class="box-card" >
+        <view class="box-card-title">我的训练</view>
+    </view>
+
+
+    <!-- 我的比赛 -->
+    <view class="box-card" >
+        <view class="box-card-title">我的比赛</view>
+        <van-row custom-class="match-info" wx:for="{{userMarchInfo.matchList}}" wx:key="*this">
+          <navigator url="/pages/matchGame/matchGame" hover-class="none">
+              <van-row>
+                <van-col  custom-class="my-match-lable-title title-info-color-light">
+                  <van-icon name="clock-o" custom-class="icon" />
+                  {{item.matchTime}} / {{item.matchName}}
+                </van-col>
+                <van-col  custom-class="my-match-lable-status match-status-{{item.matchStatus}}"></van-col>
+              </van-row>
+              <van-row custom-class="user-info-vs">
+                  <van-col  custom-class="match-info-user-left">
+                    <text wx:if="{{item.matchType === 1}}">{{item.redUserName}}</text>
+                    <text wx:else>{{item.redUserName}}&{{item.redPartName}}</text>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <image bindtap="bindViewTap" class="user-avatar-mini" src="{{item.redAvatarUrl}}" mode="cover"></image>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <text class=" {{item.redWinSetNum >= item.blueWinSetNum ?  'match-score-max':'match-score-min'}}">{{item.redWinSetNum}}</text>
+                    <text style="color:#4c4c4c;font-size:40rpx"> - </text> 
+                    <text class=" {{item.blueWinSetNum >= item.redWinSetNum ?  'match-score-max':'match-score-min'}}">{{item.blueWinSetNum}}</text>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <image bindtap="bindViewTap" class="user-avatar-mini" src="{{item.blueAvatarUrl}}" mode="cover"></image>
+                  </van-col>
+                  <van-col  custom-class="match-info-user-right">
+                    <text wx:if="{{item.matchType === 1}}">{{item.blueUserName}}</text>
+                    <text wx:else>{{item.blueUserName}}&{{item.bluePartName}}</text>
+                  </van-col>
+              </van-row>
+          </navigator>
+        </van-row>
+        <van-row custom-class="match-info-lable">
+          <van-icon name="arrow-down" size="14px" custom-class="icon" />
+        </van-row>
+    </view>
+
+  </view>
+
+
+  <view class="box-card" >
+    <van-row>
+      <van-col custom-class="my-map-title ">
+        <view class="box-card-title">附近球场</view>
+      </van-col>
+      <van-col custom-class="my-map-area">
+        <van-icon name="location-o" custom-class="icon"/>广东-深圳
+     </van-col>
+    </van-row>
+   
+    <view>
+        <view class="image-title-box" wx:for="{{fieldMapInfo.fielMapList}}" wx:key="*this">
+          <van-row>
+                <van-col custom-class="box-left-image">
+                    <!-- <van-image  fit="widthFix" custom-class="box-left-image-ifo" height=30%  src=" {{item.imgUrls[0]}}" /> -->
+                    <image src="{{item.imgUrls[0]}}" mode="aspectFill" class="box-left-image-info"></image>
+                </van-col>
+                <van-col custom-class="box-right-info">
+                      <van-row custom-class="font-size-title">
+                         {{item.fieldName}}
+                      </van-row>
+                      <van-row custom-class="my-map-area-info">
+                          <van-rate custom-class="rate-position"  size="{{ 13 }}" value="{{item.rate}}" readonly/>
+                          <text class="text-info-notes">还可预定</text>
+                      </van-row>
+
+                      <van-row custom-class="my-map-address">
+                        <van-col custom-class="my-map-address-left">
+                            <van-icon name="location-o" custom-class="icon"/>{{item.fieldAddress}}
+                        </van-col>
+                        <van-col custom-class="my-map-address-right">
+                            距您10.2km
+                        </van-col>
+                      </van-row>
+                </van-col>
+          </van-row>
+        </view>
+    </view>
+    
+
+
+
+
+
+<!--     
+    <view class="box-card">
+      <view>
+          <scroll-view class=" match-box" scroll-x>
+              <view class="match-map-box" wx:for="{{fieldMapInfo.fielMapList}}" wx:key="*this">
+                <van-row>
+                  <van-image style="margin:0px" fit="widthFix" width="100%" src=" {{item.imgUrls[0]}}" />
+                </van-row>
+                <van-row custom-class="map-name-label-row">
+                    <van-row custom-class="map-name-label">
+                    {{item.fieldName}}
+                    </van-row>
+                    <van-row custom-class="map-name-label">
+                      <van-rate custom-class="rate-position" color="rgba(26, 173, 25, 0.7)" size="{{ 13 }}" value="{{item.rate}}" readonly/>
+                    </van-row>
+                    <van-row custom-class="map-name-label">
+                      <van-icon name="location-o" custom-class="icon"/>{{item.fieldAddress}}
+                    </van-row>
+                </van-row>
+              </view>
+          </scroll-view>
+      </view>
+    </view> -->
+  
+  </view>
+
+</scroll-view>

@@ -1,0 +1,110 @@
+/**index.wxss**/
+
+.user-data-info{
+  margin-top: -200rpx;
+}
+
+.user-basic-data{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1rpx solid #eceaea;
+}
+
+.user-basic-data view:nth-child(1){
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: -90rpx;
+}
+.user-basic-data view:nth-child(2){
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align:left;
+  font-size: 35rpx;
+}
+.user-basic-data view:nth-child(3){
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align:right;
+}
+
+
+.user-at-data{
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.user-at-data-info{
+    width: 350rpx;
+    height: 200rpx;
+}
+
+.user-at-data-analysis{
+  width: 250rpx;
+  height: 200rpx;
+  background-color: thistle;
+
+}
+
+.at-data-info-row{
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 10rpx;
+}
+
+.at-data-info-row-title{
+  width: 100rpx;
+  line-height: 20rpx;
+  text-align: center;
+}
+
+.at-data-info-row-content{
+  width: 200rpx;
+  line-height: 20rpx;
+  text-align: left;
+}
+
+.user-match-box{
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.user-match-box view{
+  font-size: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  margin-left: 10rpx;
+  border: 1px solid #ecebeb;
+}
+
+.user-service-box .van-row{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+
+.user-service-icon{
+  font-size: 50rpx;
+  width: 15%;
+  text-align: center;
+}
+
+.user-service-context{
+  font-size: 30rpx;
+  width: 85%;
+  text-align: left;
+  border-bottom: 1rpx solid #f0eeee;
+}

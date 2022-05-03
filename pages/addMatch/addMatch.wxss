@@ -1,0 +1,21 @@
+/* pages/addMatch/addMatch.wxss */
+.button {
+  vertical-align: middle;
+}
+
+.custom-icon {
+  color: #1989fa;
+}
+
+.van-radio-group{
+  padding: 10px;
+  background: #fff;
+  font-size: 13px;
+}
+
+
+.button-box{
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
