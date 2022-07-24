@@ -1,0 +1,14 @@
+/* pages/invite/share/inviteShare.wxss */
+.invite-step-box-card{
+  width: 680rpx; 
+  margin: 0 auto; 
+  padding: 20rpx; 
+  background: #ffffff; 
+  border-radius:15rpx; 
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
+}
+
+.handler_save_class{
+    margin-top: 30rpx;
+}

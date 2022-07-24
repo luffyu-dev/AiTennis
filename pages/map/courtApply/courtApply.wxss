@@ -1,0 +1,4 @@
+/* pages/map/courtApply/courtApply.wxss */
+.apply-view{
+  background: #ffffff;
+}

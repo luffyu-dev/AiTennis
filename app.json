@@ -1,14 +1,22 @@
 {
   "pages": [
-    "pages/homeMatch/homeMatch",
-    "pages/homeAt/homeAt",
-    "pages/login/login",
-    "pages/index/index",
+
+
+    "pages/home/play/homePlay",
+    "pages/home/at/homeAt",
+    "pages/home/user/user",
+    "pages/invite/edit/inviteEdit",
+    "pages/invite/share/inviteShare",
     "pages/play/play",
-    "pages/matchGame/matchGame",
+    "pages/atp/rank/atpRank",
+    "pages/match/add/addMatch",
+    "pages/match/share/shareMatch",
+    "pages/scoreTool/scoreTool",
     "pages/matchInfo/matchInfo",
-    "pages/user/user",
-    "pages/addMatch/addMatch"
+    "pages/atp/player/player",
+    "pages/map/courtApply/courtApply",
+    "pages/map/tennisMap/tennisMap",
+    "pages/map/courtShow/courtShow"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,11 +32,11 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/homeMatch/homeMatch",
+        "pagePath": "pages/home/play/homePlay",
         "text": "发起赛事"
       },
       {
-        "pagePath": "pages/user/user",
+        "pagePath": "pages/home/user/user",
         "text": "我的"
       }
     ]
@@ -100,5 +108,20 @@
     "van-calendar": "./dist/calendar/index",
     "van-share-sheet": "./dist/share-sheet/index",
     "van-config-provider": "./dist/config-provider/index"
+  },
+  "plugins": {
+    "citySelector": {
+      "version": "1.0.1",
+      "provider": "wx63ffb7b7894e99ae"
+    },
+    "chooseLocation": {
+      "version": "1.0.9",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查询附近的网球球场"
+    }
   }
 }

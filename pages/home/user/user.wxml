@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="content-info-bg top-bg-container"/>
+
+<scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
+
+    <view class="box-card user-data-info">
+        <!-- 已登录 -->
+        <view wx:if="{{loginUserInfo && loginUserInfo.isLogin}}" class="user-basic-data">
+            <view ><image src="{{loginUserInfo.avatarUrl}}" class="user-info-avatar"></image></view>
+            <view bindtap="getUser">{{loginUserInfo.nickName}}</view>
+        </view>
+        <!-- 没有登录 -->
+        <view wx:else class="user-basic-data">
+            <view v-else ><image src="/image/avator/default_avator.jpeg" class="user-info-avatar"></image></view>
+            <view bindtap="inLogin">请登录</view>
+        </view>
+    </view>
+        
+    <button class="basic_button_color" bindtap="outLogin">退出登录</button>
+
+
+
+</scroll-view>

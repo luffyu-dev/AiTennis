@@ -1,0 +1,109 @@
+<view class="invite-step-box-card">
+  <van-steps  steps="{{ create_match_steps }}" active="{{ match_steps_active }}" active-color="#005335"/>
+</view>
+
+<view class="box-card">
+    <demo-block title="赛事基本信息">
+      <van-cell-group>
+        <van-field
+          value="{{ matchInfo.matchName }}"
+          label="赛事名称"
+          placeholder="请输入赛事名称"
+          right-icon-class="custom-icon"
+          input-align="right"
+          required
+          clearable
+        />
+
+        <van-cell 
+          title="赛事地点" 
+          value= "{{matchInfo.matchCourtName}}"
+          is-link
+          bind:click="onDisplay"
+          required
+        />
+
+        <van-cell 
+          title="比赛开始时间" 
+          value= "{{matchInfo.matchStarteDate}}"
+          is-link
+          bind:click="onDisplay"
+          required
+        />
+
+        <van-field
+          label="比赛人数"
+          type="number"
+          value= "{{matchInfo.matchPlayer}}"
+          right-icon-class="custom-icon"
+          input-align="right"
+          required
+          clearable
+        />
+
+        <van-field
+          label="比赛要求"
+          type="textarea"
+          value= "{{matchInfo.matchRequirement}}"
+          clearable
+          right-icon-class="custom-icon"
+          autosize="{{ initTextareaSize }}"
+          minHeight="50px"
+        />
+
+      </van-cell-group>
+    </demo-block>
+  </view>
+
+  <view class="box-card">
+     <demo-block title="比赛规则设置" >
+      <van-radio-group value="{{ matchInfo.matchRule.matchType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+        <van-radio name="1">单打</van-radio>
+        <van-radio name="2">双打</van-radio>
+      </van-radio-group>
+
+      <van-radio-group value="{{ matchInfo.matchRule.matchGameNum }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+        <van-radio name="4">4局</van-radio>
+        <van-radio name="6">6局</van-radio>
+      </van-radio-group>
+
+      <van-radio-group value="{{ matchInfo.matchRule.matchBallType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+        <van-radio name="1">金球球</van-radio>
+        <van-radio name="2">占先</van-radio>
+      </van-radio-group>
+
+      <van-radio-group value="{{ matchInfo.matchRule.matchBallType }}" data-key="radio1" bind:change="onChange" direction="horizontal">
+        <van-radio name="1">抢七</van-radio>
+        <van-radio name="2">不抢七</van-radio>
+      </van-radio-group>
+    </demo-block>
+  </view>
+
+
+<view class="box-card">
+  <demo-block title="赛事图片">
+    <van-uploader file-list="{{ matchInfo.matchPicList}}"  bind:after-read="addUploadImage" bind:delete="deletUpdateImage"/>
+  </demo-block>
+</view>
+
+<view class="steps_save_button_view">
+  <button class="basic_button_color" bindtap="saveAndCreateMatch">保存到下一步</button>
+</view>
+
+
+<van-popup
+  show="{{ show_time }}"
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onCloseTime">
+      <van-datetime-picker
+      column-class="datetime-picker-active"
+      type="datetime"
+      min-minute="0"
+      max-minute="30"
+      value="{{ initShowTime.currentDate }}"
+      min-date="{{ initShowTime.minDate }}"
+      bind:cancel="onCloseTime"
+      bind:confirm="onConfirmTime"
+    />
+</van-popup>

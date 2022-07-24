@@ -1,0 +1,83 @@
+<!--pages/map/courtApply/courtApply.wxml-->
+
+<view class="apply-view">
+    <van-cell-group>
+      <van-field
+        label="球场名称"
+        value= "{{apply_form.courtName}}"
+        placeholder="本次邀请的主题"
+        input-align="right"
+        bind:change="onChange"
+        data-key="apply_form.courtName" 
+        required
+        clearable
+      />
+
+
+      <van-cell 
+      title="球场位置" 
+      value= "{{apply_form.region}}"
+      bind:click="chooseLocationMap"
+      bind:change="onChange"
+      data-key="apply_form.region" 
+      is-link
+      required
+      />
+
+      <van-cell center title="球场数量">
+            <van-stepper value="{{ apply_form.courtNum }}" 
+                          bind:change="onChange"
+                          min="1"
+                         data-key="apply_form.courtNum" />
+      </van-cell>
+
+
+      <van-field
+        label="开放时间"
+        value= "{{apply_form.openHours}}"
+        bind:change="onChange"
+        data-key="apply_form.openHours" 
+        input-align="right"
+        clearable
+      />
+
+      <van-cell center title="环境评分">
+          <van-rate value="{{ apply_form.envScore }}" bind:change="onChange" data-key="apply_form.envScore"  />
+      </van-cell>
+
+      <van-cell center title="订场难度">
+          <van-rate value="{{ apply_form.reserveDiff }}" bind:change="onChange" data-key="apply_form.reserveDiff"  />
+      </van-cell>
+
+      <van-field
+        label="球场简介"
+        type="textarea"
+        value= "{{apply_form.introduction}}"
+        bind:change="onChange"
+        data-key="apply_form.introduction" 
+        clearable
+        minHeight="50px"
+      />
+    </van-cell-group>
+
+
+
+    <demo-block title="主背景图">
+      <van-uploader file-list="{{ apply_form.homeImageList}}" deletable="{{ true }}" max-count="1" bind:after-read="addHomeImageList" bind:delete="deletHomeImageList"></van-uploader>
+    </demo-block>
+
+
+    <demo-block title="周边环境">
+      <van-uploader file-list="{{ apply_form.envImageList}}"  deletable="{{ true }}" max-count="2" bind:after-read="addEnvImageList" bind:delete="deletEnvImageList"/>
+    </demo-block>
+
+    <demo-block title="价格表">
+      <van-uploader file-list="{{ apply_form.priceImageList}}"  deletable="{{ true }}" max-count="1" bind:after-read="addPriceImageList" bind:delete="deletPriceImageList"/>
+    </demo-block>
+
+
+    <view class="steps_save_button_view">
+      <button class="basic_button_color" loading="{{applyLoading}}" disabled="{{applyLoading}}" bindtap="applyCourtMap">提交</button>
+    </view>
+
+</view>

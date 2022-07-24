@@ -1,5 +1,0 @@
-<!--pages/login/login.wxml-->
-
-<button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-
-

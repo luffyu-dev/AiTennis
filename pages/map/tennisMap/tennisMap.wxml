@@ -1,0 +1,104 @@
+<!--pages/map/tennisMap/index.wxml-->
+<map 
+  id="tennis_map_id"
+  class="map"
+  latitude="{{onLocation.latitude}}"
+  longitude="{{onLocation.longitude}}"
+  bindmarkertap="onMarkerTap"
+  bindcallouttap="onCalloutTap"
+  bindlabeltap="onLabelTap"
+  scale="13"
+></map>
+
+<view>
+  <view class="map-tennis-court-info">
+   <van-row >
+      <van-col custom-class="court-map-title">
+        <text class="map-court-title-info">网球场地图 </text>
+      </van-col>
+      <van-col custom-class="court-user-address" bindtap="getUserLocation">
+        <van-icon name="location" custom-class="icon"/>
+        <text wx:if="{{userLocation.isSucc}}">{{userLocation.province}}/{{userLocation.city}}/{{userLocation.district}}</text>
+        <text wx:else><van-icon name="location-o" custom-class="icon"/>定位中</text>
+      </van-col>
+
+      <van-col custom-class="court-map-report">
+        <navigator url="/pages/map/courtApply/courtApply"  hover-class="none">
+          <van-icon name="records" />球场上报
+        </navigator>
+     </van-col>
+    </van-row> 
+  </view>
+<!-- 
+  <view class="map-search-view">
+    <van-dropdown-menu >
+        <van-dropdown-item value="{{ search_choice.default_region }}" options="{{ search_choice.region }}" bind:change="change_search_choice"/>
+        <van-dropdown-item value="{{ search_choice.default_court_type }}" options="{{ search_choice.court_type }}" bind:change="change_search_choice"/>
+    </van-dropdown-menu>
+  </view> -->
+
+
+  <view>
+        <view class="map-court-div-box" wx:for="{{tennisCourtList}}" wx:key="*this">
+          <van-row>
+                <van-col custom-class="box-left-image">
+                    <!-- <van-image  fit="widthFix" custom-class="box-left-image-ifo" height=30%  src=" {{item.imgUrls[0]}}" /> -->
+                    <image src="{{item.homeImage ? item.homeImage:'/image/home/court_home.jpg'}}" mode="aspectFill" class="box-left-image-info"></image>
+                </van-col>
+                <van-col custom-class="box-right-info">
+                      <van-row custom-class="font-size-title" bindtap="onCourtLbs" data-index="{{item}}">
+                         {{item.courtName}}
+                      </van-row>
+
+                      <van-row custom-class="court-map-address" bindtap="onCourtLbs" data-index="{{item}}">
+                        <van-icon name="location" custom-class="icon" />{{item.address}}
+                      </van-row>
+                      <van-row custom-class="court-map-area-info">
+                          <van-col custom-class="court-map-score-left">
+                              <van-rate custom-class="rate-position"  size="{{ 13 }}" value="{{item.score}}" readonly/>
+                          </van-col>
+                          <van-col wx:if="item.lbsDistance" custom-class="court-map-lbs-right">
+                            距您 {{tools.getlbs(item.lbsDistance)}}
+                          </van-col>
+                      </van-row>
+
+                      <van-row custom-class="court-map-area-info">
+                          <van-col custom-class="court-map-openHours">
+                            <van-icon name="underway" /> {{item.openHours}}
+                          </van-col>
+                          <van-col custom-class="court-map-lbs-right">
+                            <!-- <van-icon name="orders-o" />
+                            <van-icon name="guide-o"/> -->
+                          </van-col>
+                      </van-row>
+
+                </van-col>
+          </van-row>
+        </view>
+
+        <van-row custom-class="loading-search">
+          <van-loading wx:if="{{isCourtLoading}}" size="24px">加载中...</van-loading>
+        </van-row>
+        
+    </view>
+
+</view>
+
+<wxs module="tools">
+
+  function getlbs(lbs){
+    if(lbs < 1000){
+        return lbs+'m';
+    }else {
+      var lbsKm = lbs * 0.001;
+      var lbsN = lbsKm.toFixed(1)
+      console.log("lbsKm");
+      console.log(lbsN);
+      return lbsN+'km';
+    }
+  }
+  module.exports = {
+    getlbs: getlbs
+  }
+</wxs>
+

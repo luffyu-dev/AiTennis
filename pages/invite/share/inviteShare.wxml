@@ -1,0 +1,4 @@
+<!--pages/invite/share/inviteShare.wxml-->
+<view class="invite-step-box-card">
+  <van-steps  steps="{{ create_invite_steps }}" active="{{ invite_steps_active }}" active-color="#005335"/>
+</view>

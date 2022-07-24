@@ -1,0 +1,3 @@
+<view class="invite-step-box-card">
+  <van-steps  steps="{{ create_match_steps }}" active="{{ match_steps_active }}" active-color="#005335"/>
+</view>

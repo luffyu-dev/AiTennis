@@ -1,0 +1,200 @@
+<!--pages/match/match.wxml-->
+<view class="content-info-bg top-bg-container"/>
+
+<scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
+  <view >
+
+    <view class="box-card">
+        <view class="box-card-title">ATP动态</view>
+        <view class="match-active-box">
+          <navigator url="/pages/atp/rank/atpRank" hover-class="none">
+                <view class="image-logo"><image  mode="aspectFill" src="/image/logo/logo_atp.png" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">ATP实时排名</view>
+            </navigator>
+            <navigator url="/pages/atp/player/player"  hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_player.png"  mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">球员资料</view>
+            </navigator>
+
+            <navigator   hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_match.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">热门赛事</view>
+            </navigator>
+        </view>
+    </view>
+
+
+    <view class="box-card">
+        <view class="box-card-title">训练/比赛</view>
+        <view class="match-active-box">
+            <!-- 比赛的社交互动。用去发起邀请 -->
+            <view class="match-active-box-view" bindtap="navigateToCheckLogin" data-src="/pages/invite/edit/inviteEdit" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_double.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">邀约训练</view>
+            </view>
+
+
+            <view class="match-active-box-view" bindtap="navigateToCheckLogin" data-src="/pages/match/add/addMatch" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_s_match.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">创建比赛</view>
+            </view>
+
+            <view class="match-active-box-view"  bindtap="navigateToCheckLogin" data-src="/pages/scoreTool/scoreTool" hover-class="none">
+                <view class="image-logo"><image src="/image/logo/logo_yy.png" mode="aspectFill" class="image-logo"></image></view>
+                <view class="image-log-title title-info-color">记分工具</view>
+            </view>
+
+        </view>
+    </view >
+
+    <!-- 我的比赛 -->
+    <!-- <view class="box-card" wx:if= "{{userInviteList && userInviteList.length > 0}}" >
+        <view class="box-card-title">我的邀约</view>
+    </view> -->
+
+
+    <!-- 我的比赛 -->
+    <!-- <view class="box-card"  wx:if= "{{userMatchInfo && userMatchInfo.matchList.length > 0}}">
+        <view class="box-card-title">我参加的比赛</view>
+        <van-row custom-class="match-info" wx:for="{{userMatchInfo.matchList}}" wx:key="*this">
+          <navigator url="/pages/matchGame/matchGame" hover-class="none">
+              <van-row>
+                <van-col  custom-class="my-match-lable-title title-info-color-light">
+                  <van-icon name="clock-o" custom-class="icon" />
+                  {{item.matchTime}} / {{item.matchName}}
+                </van-col>
+                <van-col  custom-class="my-match-lable-status match-status-{{item.matchStatus}}"></van-col>
+              </van-row>
+              <van-row custom-class="user-info-vs">
+                  <van-col  custom-class="match-info-user-left">
+                    <text wx:if="{{item.matchType === 1}}">{{item.redUserName}}</text>
+                    <text wx:else>{{item.redUserName}}&{{item.redPartName}}</text>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <image bindtap="bindViewTap" class="user-avatar-mini" src="{{item.redAvatarUrl}}" mode="cover"></image>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <text class=" {{item.redWinSetNum >= item.blueWinSetNum ?  'match-score-max':'match-score-min'}}">{{item.redWinSetNum}}</text>
+                    <text style="color:#4c4c4c;font-size:40rpx"> - </text> 
+                    <text class=" {{item.blueWinSetNum >= item.redWinSetNum ?  'match-score-max':'match-score-min'}}">{{item.blueWinSetNum}}</text>
+                  </van-col>
+                  <van-col  custom-class="match-info-vs">
+                    <image bindtap="bindViewTap" class="user-avatar-mini" src="{{item.blueAvatarUrl}}" mode="cover"></image>
+                  </van-col>
+                  <van-col  custom-class="match-info-user-right">
+                    <text wx:if="{{item.matchType === 1}}">{{item.blueUserName}}</text>
+                    <text wx:else>{{item.blueUserName}}&{{item.bluePartName}}</text>
+                  </van-col>
+              </van-row>
+          </navigator>
+        </van-row>
+        <van-row custom-class="match-info-lable">
+          <van-icon name="arrow-down" size="14px" custom-class="icon" />
+        </van-row>
+    </view> -->
+
+  </view>
+
+
+  <view class="box-card" >
+    <van-row>
+      <van-col custom-class="my-map-title ">
+        <view class="box-card-title">附近球场</view>
+      </van-col>
+      <van-col custom-class="my-map-area" bindtap="getUserLocation">
+        <van-icon name="location-o" custom-class="icon"/>
+        <text wx:if="{{userLocation.isSucc}}">{{userLocation.city}}-{{userLocation.district}}</text>
+        <text wx:else><van-icon name="location-o" custom-class="icon"/>定位中</text>
+     </van-col>
+    </van-row>
+   
+    <view>
+        <view class="image-title-box" wx:for="{{tennisCourtList}}" wx:key="*this">
+          <van-row>
+                <van-col custom-class="box-left-image">
+                    <!-- <van-image  fit="widthFix" custom-class="box-left-image-ifo" height=30%  src=" {{item.imgUrls[0]}}" /> -->
+                    <image src="{{item.homeImage ? item.homeImage:'/image/home/court_home.jpg'}}" mode="aspectFill" class="box-left-image-info"></image>
+                </van-col>
+                <van-col custom-class="box-right-info">
+                      <van-row custom-class="font-size-title">
+                         {{item.courtName}}
+                      </van-row>
+
+                      <van-row custom-class="my-map-area-info">
+                          <van-col custom-class="my-map-score-left">
+                              <van-rate custom-class="rate-position"  size="{{ 13 }}" value="{{item.score}}" readonly/>
+                          </van-col>
+                          <van-col wx:if="item.lbsDistance" custom-class="my-map-lbs-right">
+                            距您 {{tools.getlbs(item.lbsDistance)}}
+                          </van-col>
+                      </van-row>
+
+                      <van-row custom-class="my-map-address">
+                        <van-icon name="location" custom-class="icon"/>{{item.address}}
+                      </van-row>
+                </van-col>
+          </van-row>
+        </view>
+
+        <van-row custom-class="loading-search">
+          <van-loading wx:if="{{isCourtLoading}}" size="24px">加载中...</van-loading>
+        </van-row>
+        
+        <view class="showMoreCourt">
+          <navigator url="/pages/map/tennisMap/tennisMap"  hover-class="none">
+              查看更多
+          </navigator>
+        </view>
+    </view>
+    
+
+
+
+
+
+<!--     
+    <view class="box-card">
+      <view>
+          <scroll-view class=" match-box" scroll-x>
+              <view class="match-map-box" wx:for="{{fieldMapInfo.fielMapList}}" wx:key="*this">
+                <van-row>
+                  <van-image style="margin:0px" fit="widthFix" width="100%" src=" {{item.imgUrls[0]}}" />
+                </van-row>
+                <van-row custom-class="map-name-label-row">
+                    <van-row custom-class="map-name-label">
+                    {{item.fieldName}}
+                    </van-row>
+                    <van-row custom-class="map-name-label">
+                      <van-rate custom-class="rate-position" color="rgba(26, 173, 25, 0.7)" size="{{ 13 }}" value="{{item.rate}}" readonly/>
+                    </van-row>
+                    <van-row custom-class="map-name-label">
+                      <van-icon name="location-o" custom-class="icon"/>{{item.fieldAddress}}
+                    </van-row>
+                </van-row>
+              </view>
+          </scroll-view>
+      </view>
+    </view> -->
+  
+  </view>
+
+</scroll-view>
+
+
+<wxs module="tools">
+
+function getlbs(lbs){
+  if(lbs < 1000){
+      return lbs+'m';
+  }else {
+    var lbsKm = lbs * 0.001;
+    var lbsN = lbsKm.toFixed(1)
+    console.log("lbsKm");
+    console.log(lbsN);
+    return lbsN+'km';
+  }
+}
+module.exports = {
+  getlbs: getlbs
+}
+</wxs>

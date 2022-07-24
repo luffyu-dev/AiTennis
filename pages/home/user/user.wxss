@@ -1,0 +1,35 @@
+/**index.wxss**/
+
+
+.user-data-info{
+  margin-top: 50rpx;
+  min-height: 260rpx;
+}
+.user-basic-data{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1rpx solid #eceaea;
+}
+
+.user-basic-data view:nth-child(1){
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: -90rpx;
+}
+.user-basic-data view:nth-child(2){
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align:left;
+  font-size: 35rpx;
+  margin-left: 10rpx;
+}
+.user-top-bg-container{
+  width: 100%;
+  height: 300rpx;
+  z-index:100;
+  border-radius: 0rpx 0rpx 40% 40% / 0rpx 0rpx 50rpx 50rpx !important;
+}
+

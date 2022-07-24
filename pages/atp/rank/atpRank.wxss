@@ -1,0 +1,90 @@
+/* pages/atpRank/atpRank.wxss */
+
+.van-tabs-view{
+  background-color: #005335;
+  color: #ffffff;
+}
+.search-view{
+  background-color: #ffffff;
+  padding: 20rpx 0;
+}
+
+
+.box-rank-view{
+  background-color: #ffffff;
+  padding: 0 20rpx;
+}
+
+.rank_tab_head{
+    width: 100%;
+    background-color: #ffffff;
+    text-align: left;
+    border-bottom: 1rpx solid #ecebebd8;
+}
+
+.rank_tab_row{
+    border-bottom: 1rpx solid #ecebebd8;
+}
+
+
+.rank_tab_rank{
+  width: 25%;
+  line-height: 100rpx;
+  text-align: center;
+}
+.rank_tab_rank_value{
+  width: 13%;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.rank_tab_rank_change{
+  width: 12%;
+  line-height: 100rpx;
+  text-align: left;
+}
+
+.rank_tab_point{
+  width: 20%;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.rank_tab_player{
+  width: 55%;
+  line-height: 100rpx;
+  text-align: left;
+}
+
+
+.nation-image-rank{
+  overflow: hidden;
+  width: 59rpx;
+  height: 46rpx;
+  margin-top: 30rpx;
+
+}
+
+.rank_player_name{
+  line-height: 70rpx;
+  margin-left: 10rpx;
+}
+
+.rank_player_nation{
+  margin-left: 10rpx;
+  line-height: 20rpx;
+  color: rgb(179, 172, 172);
+  size: 12rpx;
+}
+
+.point_info{
+  font-weight: bold;
+}
+
+.modify-time-view{
+  width: 100%;
+  text-align: center;
+  background-color: #ffffff;
+  color: #c7c3c3;
+  size: 12rpx;
+}

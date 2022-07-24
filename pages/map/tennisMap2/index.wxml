@@ -1,0 +1,24 @@
+<!--pages/map/tennisMap/index.wxml-->
+<map 
+  id="mapId"
+  class="map"
+  latitude="{{latitude}}"
+  longitude="{{longitude}}"
+  bindmarkertap="onMarkerTap"
+  bindcallouttap="onCalloutTap"
+  bindlabeltap="onLabelTap"
+></map>
+
+
+
+<view>
+
+  <button bindtap="showMap">展示位置</button>
+
+
+  <button bindtap="showS">展示位置2</button>
+
+
+  <button bindtap="addMark">添加标记</button>
+
+</view>

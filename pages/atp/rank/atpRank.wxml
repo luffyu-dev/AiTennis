@@ -1,0 +1,77 @@
+<!--pages/atpRank/atpRank.wxml-->
+<view>
+    <van-tabs active="{{ tab_active }}" bind:click="clickTabls" color="#ffffff" title-active-color="#ffffff" title-inactive-color="#efefef" nav-class="van-tabs-view">
+      <van-tab title="ATP实时排名" name="atp"></van-tab>
+      <van-tab title="WTA实时排名" name="wta"></van-tab>
+  
+    </van-tabs>
+
+    <view class="search-view">
+      <van-search value="{{ searchValue }}" shape="round" placeholder="球员/国家名称" bind:search="startSearch" bind:clear="startSearch"/>
+    </view>
+
+    <view wx:if="{{!isLoading}}" class="modify-time-view">
+          数据更新于：{{rank_modify_str}} 
+    </view>
+
+    <view class="box-rank-view">
+      <van-row custom-class="rank_tab_head">
+            <van-col custom-class="rank_tab_rank" >排名</van-col>
+            <van-col custom-class="rank_tab_player">姓名</van-col>
+            <van-col custom-class="rank_tab_point">积分</van-col>
+      </van-row>
+
+      <van-row wx:for="{{atpRankList}}"  wx:key="*this"  custom-class="rank_tab_row">
+            <van-col custom-class="rank_tab_rank_value" >
+                <van-tag wx:if="{{item.rank <= 5}}" type="{{item.rank <= 3 ? 'warning' : 'success'}}"> {{item.rank}}</van-tag>
+                 <text wx:else> {{item.rank}} </text>
+            </van-col>
+            
+            <van-col custom-class="rank_tab_rank_change" >
+                 <view wx:if="{{item.rankChange < 0}}" style="color:green"> <van-icon name="down" /> {{-item.rankChange}} </view>
+                 <view wx:elif="{{item.rankChange > 0}}" style="color:red"><van-icon name="back-top" />{{item.rankChange}} </view>
+                 <view wx:else> - </view>
+            </van-col>
+
+
+            <van-col custom-class="rank_tab_player">
+                <van-col custom-class="rank_player_img">
+                  <image bindtap="bindViewTap" class="nation-image-rank" src="{{item.nationImg}}" mode="cover"></image>
+                </van-col>
+                <van-col >
+                    <view class="rank_player_name">{{js.showFullName(item.chinaFullName)}}</view>
+                    <view class="rank_player_nation">{{item.nationChineseName}}</view>
+                </van-col>
+            </van-col>
+
+            <van-col custom-class="rank_tab_point">
+                <text class="point_info"> {{item.point}} </text>
+            </van-col>
+
+      </van-row>
+
+      <van-row custom-class="loading-search">
+          <van-loading wx:if="{{isLoading}}" size="24px">加载中...</van-loading>
+      </van-row>
+    </view>
+
+  
+</view>
+
+<wxs module="js">
+  function showFullName(name){
+    console.log(">>>>>>>>>>>>>>>showFullName");
+    if(name.length >= 13){
+      if(name.indexOf("·") > 0){
+        var array = name.split("·");
+        name = array[array.length - 1]
+      }
+      return name.substring(0,12);
+    }else{
+      return name;
+    }
+  }
+  module.exports={
+    showFullName:showFullName
+  }
+</wxs>

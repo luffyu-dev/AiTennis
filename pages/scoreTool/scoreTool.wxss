@@ -1,0 +1,251 @@
+/* pages/matchGame/matchGame.wxss */
+.game-user-box-cover-bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+}
+.game-user-box-bg{
+  width: 100%;
+  height: 180px;
+  position: absolute;
+  background-color: cadetblue;
+
+}
+.game-user-box-cover{
+  width: 96%;
+  margin-left: 2%;
+  height: 100%;
+  position: absolute;
+
+}
+
+.game-user-box{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 170px;
+  background-color: #ffffff;
+  
+}
+
+.game-user-info-left{
+  margin-left: 2%;
+  width: 32%;
+  height: 100%;
+
+}
+.game-user-info-middle{
+  width: 32%;
+  height: 100%;
+
+}
+
+.game-user-info-right{
+  width: 32%;
+  height: 100%;
+
+}
+
+.game-user-info-avatar{
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.game-user-info-label{
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+.game-info-top{
+    width: 100%;
+    margin-top: 10px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.game-info-middle{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.game-info-bottom{
+  width: 100%;
+  margin-top: 10px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  height: 30px;
+  font-size: 12px;
+  color: rgb(177, 174, 174);
+}
+.game-info-middle-score{
+  width: 33%;
+  font-size: 35px;
+  font-weight: 400;
+}
+.game-info-middle-score-vs{
+  width: 33%;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.content {
+  margin-top: 5px;
+  /* background-color: #ffffff; */
+}
+
+.game-score-detail-row{
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    font-size: 15px;
+    color: #000000;
+}
+.game-score-detail-col{
+  width: 22%;
+  font-size: 15px;
+}
+.game-score-detail-col-middle{
+  width: 12%;
+  font-size: 15px;
+  color: #000000;
+}
+.game-score-ignor{
+   font-size: 11px;
+   color: rgb(177, 174, 174);
+}
+
+.game-score-name{
+  width: 45%;
+  font-size: 15px; 
+}
+.game-score-name-vs{
+  width: 10%;
+  font-size: 15px; 
+}
+.set-game-score-group{
+  border-radius: 10rpx;
+  /* box-shadow: 1px 1px 5px 1px #cdcfcf; */
+  background-color: #ffffff;
+}
+.set-game-info-group{
+  margin-top: -5px;
+}
+
+.set-game-score{
+  width: 50%;
+  height:220px;
+  padding-bottom: 10px;
+  /* border-radius: 10rpx;
+  border-top-left-radius: initial;
+  box-shadow: 2px 2px 5px 1px #cdcfcf; */
+}
+
+.set-game-score-top{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.set-game-score-middle{
+  width: 100%;
+  height: 100px;
+  line-height:100px;
+  text-align: center;
+  font-size: 55px;
+}
+
+.set-game-score-bottom{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.set-score-button{
+  font-size: 14px;
+  margin: 10px;
+}
+.old-game-score{
+  margin-top: 10px;
+}
+
+.button-score-add{
+  width: 90%;
+  margin-left: 5%;
+  height: 30px;
+}
+.button-score-s{
+  width: 20%;
+  height: 30px;
+}
+.game-score-info-row{
+  width: 100%;
+  height: 100px;
+}
+.game-score-info-col-user{
+  width: 30%;
+  height: 100px;
+  line-height: 100px;
+}
+
+.game-score-info-col-user .van-row{
+    height: 49px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #000000;
+}
+
+.score-divider{
+  height: 2px;
+  line-height: 2px;
+  width: 100%;
+  background-color: #f7f8fa;
+}
+
+.game-score-info-col{
+  width: 69%;
+  height: 100px;
+  line-height: 100px;
+  margin-left: 1%;
+}
+
+.match-box{
+  width: 100%;
+  white-space: nowrap;
+  height: 160px;
+}
+.match-score-box{
+  width: 40px;
+  display: inline-block;
+  height: 100px;
+}
+.match-score-box .van-row{
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin-left: 2px;
+  padding: 2px;
+}
+
+.match-score-box-row{
+  font-size: 15px;
+  color: #000000;
+}
+.demo-block{
+  background-color: #ffffff;
+}
+
+.change-avator{
+  margin-left: 30rpx;
+}

@@ -1,0 +1,47 @@
+/* pages/map/courtShow/index.wxss */
+.map {
+  width: 100%;
+  height: 600rpx;
+}
+
+.map-court-div-box{
+    padding: 20rpx 0;
+    background-color: #ffffff;
+    margin-top: 10rpx;
+    width: 96%;
+    margin-left: 2%;
+    border-radius:5rpx; 
+}
+
+.map-tennis-court-info{
+  width: 100%;
+  line-height: 100rpx;
+  background-color: #ffffff;
+}
+
+.court-map-title{
+  width: 28%;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.court-user-address{
+  width: 45%;
+  color: #9a9e9c;
+}
+.court-map-report{
+  width: 25%;
+  text-align: right;
+}
+
+.map-court-title-info{
+  /* font-size: 40rpx; */
+  font-weight: bold;
+  padding: 10rpx;
+}
+
+.court-map-openHours{
+  width: 65%;
+  font-size: 25rpx;
+  color: #9a9e9c;
+  line-height: 30rpx;
+}

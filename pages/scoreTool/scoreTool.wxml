@@ -1,0 +1,250 @@
+<!--pages/matchGame/matchGame.wxml-->
+<!-- <cover-view class="game-user-box-cover-bg" style="background-color: cadetblue;">
+    <cover-image src="/image/gameBg.jpeg" class="game-user-box-bg"></cover-image>
+</cover-view> -->
+
+<view class="game-user-box-cover">
+    <view>
+        <van-row custom-class="game-user-box">
+            <van-col custom-class="game-user-info-left">
+                <van-row custom-class="game-user-info-avatar">
+                  <image bindtap="bindViewTap" class="user-avatar-middle" src="{{matchInfo.redAvatarUrl}}" mode="cover"></image>
+                </van-row>
+                <van-row custom-class="game-user-info-label">
+                  <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.redUserName}}</text>
+                  <text wx:else>{{matchInfo.redUserName}}&{{matchInfo.redPartName}}</text>
+                </van-row>
+            </van-col>
+            <van-col custom-class="game-user-info-middle">
+              <van-row custom-class="game-info-top">
+                    <text wx:if="{{matchInfo.matchStatus == 1}}">第 {{activeMatchInfo.nowStartSet}} 盘</text>
+                    <text wx:if="{{matchInfo.matchStatus == 2}}">{{matchInfo.matchName}}</text>
+              </van-row>
+              <van-row wx:if="{{matchInfo.matchStatus != 2 || matchInfo.rule.matchSetType == 1}}" custom-class="game-info-middle" >
+                  <van-col custom-class="game-info-middle-score">{{activeMatchInfo.redWinGameNum}}</van-col>
+                  <van-col custom-class="game-info-middle-score-vs"> - </van-col>
+                  <van-col custom-class="game-info-middle-score">{{activeMatchInfo.blueWinGameNum}}</van-col>
+              </van-row>
+              <van-row  wx:elif="{{matchInfo.matchStatus == 2 && matchInfo.rule.matchSetType != 1}}" custom-class="game-info-middle" >
+                  <van-col custom-class="game-info-middle-score">{{matchInfo.redWinSetNum}}</van-col>
+                  <van-col custom-class="game-info-middle-score-vs"> - </van-col>
+                  <van-col custom-class="game-info-middle-score">{{matchInfo.blueWinSetNum}}</van-col>
+              </van-row>
+              <van-row custom-class="game-info-bottom">
+                  <van-row wx:if="{{matchInfo.matchStatus != 2}}">{{matchInfo.matchName}} </van-row>
+                  <van-row><text class="match-status-{{matchInfo.matchStatus}}"> </text></van-row>
+                  <!-- <van-row><navigator> <van-icon name="video-o"   custom-class="icon"/>开启直播</navigator></van-row> -->
+              </van-row>
+            </van-col>
+            <van-col custom-class="game-user-info-right">
+              <van-row custom-class="game-user-info-avatar">
+                  <image bindtap="bindViewTap" class="user-avatar-middle" src="{{matchInfo.blueAvatarUrl}}" mode="cover"></image>
+                </van-row>
+                <van-row custom-class="game-user-info-label">
+                  <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.blueUserName}}</text>
+                  <text wx:else>{{matchInfo.blueUserName}}&{{matchInfo.bluePartName}}</text>
+                </van-row>
+            </van-col>
+        
+        </van-row>
+
+    </view>
+
+    <view class="content-body">
+      <van-tabs bind:change="onChange">
+        <van-tab title="数据">
+          <view class="content">
+            <view class="content-item">
+                <van-row>
+                    <van-col custom-class="set-game-score">
+                        <van-row custom-class="set-game-score-top"> 
+                            <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.redUserName}}</text>
+                            <text wx:else>{{matchInfo.redUserName}}&{{matchInfo.redPartName}}</text>
+                        </van-row>
+                        <van-row>
+                          <van-divider custom-style="padding:3px;margin:0px"/>
+                        </van-row>
+                        <van-row custom-class="set-game-score-middle"> {{scoreArray[activeMatchInfo.redWinScoreNum]}}</van-row>
+                        <van-row>
+                          <van-divider custom-style="padding:3px;margin:0px"/>
+                        </van-row>
+                        <van-row custom-class="set-game-score-bottom button-sp-area"> 
+                          <!-- <van-col custom-class="button-score-s">
+                              <navigator bindtap="backScore">  <van-icon name="revoke" size="20px"  custom-class="icon"/></navigator>
+                          </van-col> -->
+                          <van-col custom-class="button-score-add">
+                            <button  class="set-score-button basic_button_color" style="width:90%" bindtap="addRedScore" disabled="{{matchInfo.matchStatus == 2}}">
+                              <van-icon name="plus" size="14px"  custom-class="icon"/>
+                              得 分
+                            </button> 
+                          </van-col>
+                        </van-row>
+                    </van-col>
+                    <van-col custom-class="set-game-score">
+                      <van-row custom-class="set-game-score-top"> 
+                        <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.blueUserName}}</text>
+                        <text wx:else>{{matchInfo.blueUserName}}&{{matchInfo.bluePartName}}</text>
+                      </van-row>
+                        <van-row>
+                          <van-divider custom-style="padding:3px;margin:0px"/>
+                        </van-row>
+                        <van-row custom-class="set-game-score-middle"> {{scoreArray[activeMatchInfo.blueWinScoreNum]}}</van-row>
+                        <van-row>
+                          <van-divider custom-style="padding:3px;margin:0px"/>
+                        </van-row>
+                        <van-row custom-class="set-game-score-bottom button-sp-area"> 
+                          <van-col custom-class="button-score-add">
+                            <button   class="set-score-button basic_button_color" style="width:90%" bindtap="addBlueScore" disabled="{{matchInfo.matchStatus == 2}}">
+                              <van-icon name="plus" size="14px"  custom-class="icon"/>
+                              得 分
+                            </button> 
+                          </van-col>
+                          <!-- <van-col custom-class="button-score-s">
+                              <navigator bindtap="backScore">  <van-icon name="revoke" size="20px"  custom-class="icon"/></navigator>
+                          </van-col> -->
+                        </van-row>
+                    </van-col>
+                </van-row>       
+            </view>
+            <view class="set-game-info-group">
+                <van-collapse custom-class="old-game-score"  value="{{ active1 }}" data-key="active1" bind:change="onChange">
+                    <van-collapse-item wx:for="{{matchInfo.matchSetList}}" wx:key="*this">
+                        <view slot="title">
+                          <text>第 {{item.nowGameSetNum}} 盘 </text>
+                          <text>{{item.redWinGameNum}} - {{item.blueWinGameNum}} </text>
+                          <text class="match-status-{{item.gameSetStatus}}"> </text>
+                        </view>
+                        <van-row custom-class="game-score-info-row">
+                              <van-col custom-class="game-score-info-col-user">
+                                  <van-row >
+                                    <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.redUserName}}</text>
+                                    <text wx:else>{{matchInfo.redUserName}}&{{matchInfo.redPartName}}</text>
+                                  </van-row>
+                                  <view class="score-divider"></view>
+                                  <van-row>
+                                    <text wx:if="{{matchInfo.rule.matchType == 1}}">{{matchInfo.blueUserName}}</text>
+                                    <text wx:else>{{matchInfo.blueUserName}}&{{matchInfo.bluePartName}}</text>
+                                  </van-row>
+                              </van-col>
+                              <van-col custom-class="game-score-info-col">
+                                <scroll-view class=" match-box" scroll-x>
+                                  <view class="match-score-box" wx:for="{{item.gameWaterList}}"  wx:for-item="gameItem" wx:key="gameItem">
+                                    <van-row custom-class="match-score-box-row">{{gameItem.redWinGameNum}}</van-row>
+                                    <van-row custom-class="game-score-ignor">{{scoreArray[gameItem.redWinScoreNum]}}</van-row>
+                                    <van-row custom-class="game-score-ignor"> | </van-row>
+                                    <van-row custom-class="game-score-ignor">{{scoreArray[gameItem.blueWinScoreNum]}}</van-row>
+                                    <van-row custom-class="match-score-box-row">{{gameItem.blueWinGameNum}}</van-row>
+                                  </view>
+                                  
+                                </scroll-view>
+                              </van-col>
+                        </van-row>
+                    </van-collapse-item>
+                </van-collapse>
+            </view>
+            
+          </view>
+        </van-tab>
+        <van-tab title="设置">
+          <view class="content">
+            <view class="content-item">
+              <demo-block title="规则设置" >
+                  <van-radio-group value="{{ matchInfo.rule.matchType }}" data-key="matchInfo.rule.matchType" bind:change="onChange" direction="horizontal">
+                    <van-radio name="1">单打</van-radio>
+                    <van-radio name="2">双打</van-radio>
+                  </van-radio-group>
+
+                  <van-radio-group value="{{ matchInfo.rule.matchGameType }}" data-key="matchInfo.rule.matchGameType" bind:change="onChange" direction="horizontal">
+                    <van-radio name="4">4局</van-radio>
+                    <van-radio name="6">6局</van-radio>
+                  </van-radio-group>
+
+                  <van-radio-group value="{{ matchInfo.rule.matchBallType }}" data-key="matchInfo.rule.matchBallType" bind:change="onChange" direction="horizontal">
+                    <van-radio name="1">金球</van-radio>
+                    <van-radio name="2">占先</van-radio>
+                  </van-radio-group>
+
+                  <van-radio-group value="{{ matchInfo.rule.strongType }}" data-key="matchInfo.rule.strongType" bind:change="onChange" direction="horizontal">
+                    <van-radio name="1">抢七</van-radio>
+                    <van-radio name="0">不抢七</van-radio>
+                  </van-radio-group>
+
+                  <van-radio-group value="{{ matchInfo.rule.matchSetType }}" data-key="matchInfo.rule.matchSetType" bind:change="onChange" direction="horizontal">
+                    <van-radio name="1">单盘</van-radio>
+                    <van-radio name="3">3盘</van-radio>
+                    <van-radio name="5">5盘</van-radio>
+                  </van-radio-group>
+              </demo-block>
+            </view>
+
+            <view class="content-item">
+                <demo-block title="修改基础信息">
+                    <van-cell-group>
+                      <van-field
+                        value="{{  matchInfo.matchName }}"
+                        data-key="matchInfo.matchName" 
+                        label="赛事名称"
+                        placeholder="赛事名称"
+                        maxlength="9"
+                        bind:change="onChange"
+                        clearable
+                      />
+
+                      <van-field
+                        value="{{ matchInfo.redUserName }}"
+                        data-key="matchInfo.redUserName" 
+                        label="A方名称"
+                        placeholder="A方名称"
+                        bind:change="onChange"
+                        clearable
+                      />
+
+                      <van-field
+                      wx:if="{{matchInfo.rule.matchType == 2}}"
+                        value="{{ matchInfo.redPartName }}"
+                        data-key="matchInfo.redPartName" 
+                        label="A方伙伴"
+                        placeholder="A方伙伴"
+                        bind:change="onChange"
+                        clearable
+                      />
+
+                      <van-field
+                        value="{{ matchInfo.blueUserName }}"
+                        data-key="matchInfo.blueUserName" 
+                        label="B方名称"
+                        placeholder="B方名称"
+                        bind:change="onChange"
+                        clearable
+                      />
+
+                      <van-field
+                        wx:if="{{matchInfo.rule.matchType == 2}}"
+                        value="{{ matchInfo.bluePartName }}"
+                        data-key="matchInfo.bluePartName" 
+                        label="B方伙伴"
+                        placeholder="B方伙伴"
+                        bind:change="onChange"
+                        clearable
+                      />
+                    </van-cell-group>
+                  </demo-block>
+                </view>
+                <view class="content-item">
+                  <demo-block title="修改图像信息">
+                    <van-cell-group   custom-class="change-avator">
+                      <van-uploader
+                          file-list="{{ tempAvatarUrlList }}"
+                          max-count="2"
+                          bind:after-read="addTempAvatar"
+                          bind:delete="deletTempAvatar"
+                      />
+                    </van-cell-group>
+                  </demo-block>
+              </view>
+          </view>
+        </van-tab>
+      </van-tabs>
+    </view>
+</view>
+

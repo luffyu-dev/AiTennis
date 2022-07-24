@@ -1,0 +1,80 @@
+<!--pages/inviteShare/inviteShare.wxml-->
+<view class="invite-step-box-card">
+  <van-steps  steps="{{ create_invite_steps }}" active="{{ invite_steps_active }}" active-color="#005335"/>
+</view>
+
+<view class="box-card">
+
+    <van-cell-group>
+      <van-field
+        label="主题"
+        value= "{{edit_train_data.trainTitle}}"
+        placeholder="本次邀请的主题"
+        input-align="right"
+        right-icon-class="custom-icon"
+        required
+        clearable
+      />
+
+      <van-cell 
+      title="训练时间" 
+      value= "{{edit_train_data.trainStartTime}}"
+      is-link
+      bind:click="onDisplay"
+      required
+      />
+
+      <van-cell 
+      title="训练地点" 
+      value= "{{edit_train_data.trainAddress}}"
+      is-link
+      bind:click="onDisplay"
+      required
+      />
+
+      <van-field
+        label="训练人数"
+        type="number"
+        value= "{{edit_train_data.trainPlayer}}"
+        right-icon-class="custom-icon"
+        input-align="right"
+        required
+        clearable
+      />
+      <van-field
+        label="活动简介"
+        type="textarea"
+        value= "{{edit_train_data.trainExplain}}"
+        clearable
+        right-icon-class="custom-icon"
+        autosize="{{ initTextareaSize }}"
+        minHeight="50px"
+      />
+    </van-cell-group>
+
+    <demo-block title="相关图片">
+      <van-uploader file-list="{{ edit_train_data.trainPicList}}"  bind:after-read="addUploadImage" bind:delete="deletUpdateImage"/>
+    </demo-block>
+</view>
+
+
+<view class="steps_save_button_view">
+  <button class="basic_button_color" bindtap="saveAndCreateInvite">保存到下一步</button>
+</view>
+
+<van-popup
+  show="{{ show_time }}"
+  position="bottom"
+  custom-style="height: 50%;"
+  bind:close="onCloseTime">
+      <van-datetime-picker
+      column-class="datetime-picker-active"
+      type="datetime"
+      min-minute="0"
+      max-minute="30"
+      value="{{ initShowTime.currentDate }}"
+      min-date="{{ initShowTime.minDate }}"
+      bind:cancel="onCloseTime"
+      bind:confirm="onConfirmTime"
+    />
+</van-popup>
