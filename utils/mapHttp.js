@@ -15,7 +15,6 @@ export function searchByRegion(params,succEvent){
 }
 
 
-
 // atp的排名信息搜索
 export function applyTennisCourt(params,succEvent){
   doPost(

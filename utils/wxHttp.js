@@ -4,6 +4,8 @@ let env = 'prod-2gxjsh9eca9883f0';
 // 测试服务
 let wx_cloud_server_name = 'test';
 
+let openMock = true;
+
 export function doAtLogin(data,event){
   doPost(
     "rubber-user",
@@ -15,6 +17,11 @@ export function doAtLogin(data,event){
 
 
 export function doGet(serverName,url,data,event){
+  if(openMock){
+    doGetMock(serverName,url,data,event)
+    return;
+  }
+
   wx.cloud.callContainer({
     config: {
       env: env, // 微信云托管的环境ID
@@ -37,6 +44,10 @@ export function doGet(serverName,url,data,event){
 
 
 export function doPost(serverName,url,data,event){
+  if(openMock){
+    doGetMock(serverName,url,data,event)
+    return;
+  }
   console.log('>>>>>>>>>>>doPost')
   wx.cloud.callContainer({
     config: {
@@ -100,4 +111,23 @@ export function wxDoDeleteUploadImage(fileId){
     }
   })
   
+}
+
+
+
+
+export function  doGetMock(serverName,url,data,event) {
+  console.log('>>>>>>>>>>>doMOCKLGet start')
+  wx.request({
+    url: 'https://console-mock.apipost.cn/app/mock/project/edefc4ea-1d5a-408e-e869-c709cd1275e1' + url, //仅为示例，并非真实的接口地址
+    data: data,
+    header: {
+      'Content-Type': 'application/json'
+    },
+    success (res) {
+      console.log('>>>>>>>>>>>doMOCKLGet success')
+      console.log(res),
+      event(res);
+    }
+  })
 }

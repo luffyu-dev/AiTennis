@@ -133,9 +133,11 @@ Page({
     _this.setData({
       isCourtLoading : true
     })
+    params['district']='';
     params.page = 1;
     params.size = 5;
     searchByRegion(params,(res)=>{
+      console.log("queryTennisCourt success");
         console.log(res);
         let result = res.data;
         if(result.code === "1000000"){
@@ -157,6 +159,8 @@ Page({
     _this.setData({
       isCourtLoading : true
     })
+
+
     getNowUserLocation(true,(res)=>{
       console.log("getCacheUserLocation");
       console.log(res);

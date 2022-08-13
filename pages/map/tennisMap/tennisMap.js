@@ -96,6 +96,7 @@ Page({
   // 查询附近的网球球场
   queryTennisCourt(params){
     console.log("queryTennisCourt");
+    params['district']='';
     console.log(params);
     let _this = this;
     _this.setData({
