@@ -1,4 +1,9 @@
-import {doPost} from './wxHttp'; 
+// import {doPost} from './wxHttp'; 
+
+import {doPost} from './http/wxHttp-pre'; 
+
+
+
 var QQMapWX = require('./../components/qqmapjs/qqmap-wx-jssdk.js');
 var qqmapsdk = new QQMapWX({
   key: 'DBXBZ-UNOCX-AOC4E-TLBFC-2LO5S-MRB34'
@@ -8,7 +13,7 @@ var qqmapsdk = new QQMapWX({
 export function searchByRegion(params,succEvent){
     doPost(
       "at-map-api",
-      "/at-map-api/tennis-court/region-search",
+      "/at-api/tennis-court/region/search",
       params,
       succEvent
     )
@@ -19,7 +24,7 @@ export function searchByRegion(params,succEvent){
 export function applyTennisCourt(params,succEvent){
   doPost(
     "at-map-api",
-    "/at-map-api/tennis-court/apply",
+    "/at-api/tennis-court/submit/report",
     params,
     succEvent
   )

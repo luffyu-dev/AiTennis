@@ -1,4 +1,6 @@
-import {doPost} from './wxHttp'; 
+// import {doPost} from './wxHttp'; 
+
+import {doPost} from './http/wxHttp-pre'; 
 
 
 // atp的排名信息搜索
@@ -6,7 +8,7 @@ export function searchAtpRank(params,succEvent){
     console.log("searchAtpRank>>>>>params");
     doPost(
       "at-atp-api",
-      "/at-api/atp/rank/search",
+      "/at-api/rank/atp/search",
       params,
       succEvent
     )
@@ -17,7 +19,7 @@ export function searchAtpRank(params,succEvent){
 export function searchAtpPlayer(params,succEvent){
   doPost(
     "at-atp-api",
-    "/at-api/atp/player/search",
+    "/at-api/player/atp/search",
     params,
     succEvent
   )
@@ -29,7 +31,7 @@ export function searchAtpPlayer(params,succEvent){
 export function searchWtaRank(params,succEvent){
   doPost(
     "at-atp-api",
-    "/at-api/wta/rank/search",
+    "/at-api/rank/wta/search",
     params,
     succEvent
   )
@@ -41,7 +43,7 @@ export function searchWtaRank(params,succEvent){
 export function searchWtaPlayer(params,succEvent){
   doPost(
     "at-atp-api",
-    "/at-api/wta/player/search",
+    "/at-api/player/wta/search",
     params,
     succEvent
   )

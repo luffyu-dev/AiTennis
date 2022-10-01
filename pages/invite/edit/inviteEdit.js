@@ -1,4 +1,4 @@
-import {wxDoUploadImage,wxDoDeleteUploadImage} from '../../../utils/wxHttp'; 
+import {wxDoUploadImage,wxDoDeleteUploadImage} from '../../../utils/imageHttp'; 
 import {formatTimeTwo} from '../../../utils/util'; 
 // pages/inviteShare/inviteShare.js
 Page({

@@ -1,5 +1,5 @@
 // pages/map/courtApply/courtApply.js
-import {wxDoUploadImage,wxDoDeleteUploadImage} from '../../../utils/wxHttp'; 
+import {wxDoUploadImage,wxDoDeleteUploadImage} from '../../../utils/imageHttp'; 
 const chooseLocation = requirePlugin('chooseLocation');
 import { applyTennisCourt } from '../../../utils/mapHttp'; 
 

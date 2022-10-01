@@ -1,4 +1,4 @@
-import {doAtLogin} from './wxHttp'; 
+import {doPost} from './http/wxHttp-pre'; 
 
 // 封装的微信登录的方法
 export function doLogin(successEvent){
@@ -73,4 +73,14 @@ export function isLogin(){
 export function outLogin(successEvent){
    wx.setStorageSync('loginUserInfo', null)
    successEvent();
+}
+
+
+
+export function doAtLogin(data,event){
+  doPost(
+    "rubber-user",
+    "/user-api/user/login",
+    data,
+    event);
 }

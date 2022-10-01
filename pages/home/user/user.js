@@ -2,7 +2,6 @@
 // pages/user/user.js
 import { doLogin, getLoginUser , outLogin, isLogin} from '../../../utils/login'; 
 
-import {doGet,doPost} from '../../../utils/wxHttp'; 
 
 
 Page({
