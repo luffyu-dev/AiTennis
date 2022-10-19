@@ -1,0 +1,232 @@
+/* pages/invite/show/inviteShow.wxss */
+@import "/components/rankTemplate/rankTpl.wxss";
+
+
+
+
+.show-box-card{
+  width: 100%;
+  margin: 0 auto; 
+  min-height: 300rpx;
+  z-index:200;  
+  position: absolute;
+}
+
+
+.show-image-box{
+  width: 750rpx;
+}
+
+.show-home-image{
+  width: 100%;
+  height: 350rpx;
+}
+
+
+.show-invite-info-box{
+  width: 100%; 
+  min-height: 400rpx;
+  margin-top: -20rpx;
+  border-radius:15rpx 15rpx 0 0; 
+  position:absolute;
+  z-index:300;
+}
+
+.invite-info-cell{
+  padding: 20rpx 10rpx !important;
+}
+
+
+.invite-info-title{
+  width: 100%;
+  padding: 0 10rpx;
+  font-size: 50rpx;
+}
+
+.invite-join-user{
+  width: 90%;
+  min-height: 120rpx;
+}
+
+.invite-join-user-title{
+  margin-top: 20rpx;
+  padding: 0 20prx;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.invite-join-user-list{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  min-height: 100rpx;
+}
+.invite-join-user-avatar{
+  margin-right: 2rpx;
+}
+.invite-info-state{
+  position:absolute;
+  width:50rpx;
+  margin-left: 680rpx;
+  color: white;
+  min-height: 100rpx;
+  text-align: right;
+  box-shadow: -2px 2px 3px 1px #cdcfcf
+}
+.invite-info-state view{
+   width: 30 rpx;
+   padding: 15rpx;
+   height: 100rpx;
+   background-color: #005335;
+   box-shadow: -2px 2px 3px 1px #cdcfcf
+}
+
+.invite-main-user-avatar{
+  padding: 10rpx;
+  margin-left: 10rpx;
+  width: 100rpx;
+}
+.invite-main-user-name{
+  line-height: 105rpx;
+  font-size: 30rpx;
+  text-align: left;
+  width: 400rpx;
+}
+.invite-main-user-option{
+  line-height: 105rpx;
+  font-size: 40rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.invite-main-user-option .van-icon{
+  margin-left: 20rpx;
+}
+
+.invite_remark_detail{
+  padding: 20rpx;
+  min-height: 100rpx;
+  font-size: 14px;
+  color: #646566;
+
+}
+
+.invite_rank_view{
+  width: 47%;
+  margin-left: 2%;
+  min-height: 300rpx;
+  border: 1px solid rgb(240, 238, 238);
+  margin-bottom: 200rpx;
+}
+
+.option-view{
+  position: fixed;
+  bottom: 0;
+  z-index: 600;
+  display: flex;
+  width: 100%;
+  height: 80rpx;
+  background-color:white;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1rpx solid rgb(195, 195, 195,1);
+}
+.option-view van-icon{
+  font-size: 40rpx;
+}
+
+.option-home{
+  display: inline-block;
+  width: 25%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-right: 1px solid rgb(240, 238, 238);
+  font-size: 35rpx;
+}
+
+.option-share{
+  display: inline-block;
+  width: 25%;
+  border-right: 1px solid rgb(240, 238, 238);
+
+}
+
+.option-join{
+  display: inline-block;
+  width: 50%;
+  height: 80rpx;
+  text-align: center;
+}
+.option-join .van-count-down{
+  font-size: 20rpx;
+  color:gray;
+}
+
+.option-share-btn{
+  padding: 0 !important;
+  width: 100% !important;
+  height: 80rpx; 
+  line-height: 80rpx;
+  display: inline-block;
+  background-color: white;
+  font-weight: normal;
+  font-size: 35rpx;
+}
+
+.option-join-btn{
+  width: 300rpx !important;
+  display: inline-block;
+  margin-top: 5rpx;
+
+}
+
+.option-join-btn van-icon{
+  font-size: 30rpx;
+}
+
+
+.consal_button_color{
+  background-color: #d5622a;
+  color: #fff;
+}
+
+
+.advanced_setting_row{
+  width: 90%;
+  margin-left: 4%;
+  overflow: hidden;
+  padding: 20rpx;
+  background: #fff;
+  white-space: nowrap;
+  border-bottom: 1rpx solid #f1f3f2;
+}
+
+
+.advanced_setting_cell{
+  min-width: 210rpx;
+  background-color: #00533409;
+  height: 100rpx;
+  margin-left: 20rpx;
+  display: inline-block;
+  border-radius: 5rpx;
+
+}
+
+
+.advanced_setting_cell_title{
+  width: 80%;
+  margin-left: 10%;
+  padding: 10rpx 0rpx;
+  font-size: 14px;
+  border-bottom: 1rpx solid #dcdfde;
+  color: #646566;
+}
+
+.advanced_setting_cell_value{
+  font-size: 14px;
+  width: 80%;
+  margin-left: 10%;
+  padding: 10rpx 0rpx;
+  color: #646566;
+}

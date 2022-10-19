@@ -11,11 +11,14 @@ let host = 'http://api.luffyu.cn';
 
 // get请求
 export function  doGet(serverName,url,data,event) {
+  let loginUserInfo = wx.getStorageSync('loginUserInfo') 
+
   wx.request({
     url: host + url, //仅为示例，并非真实的接口地址
     data: data,
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': wx.getStorageSync('login-Cookie')
     },
     success (res) {
       console.log('>>>>>>>>>>>doMOCKLGet success')
@@ -32,12 +35,19 @@ export function  doPost(serverName,url,data,event) {
     data: data,
     method: 'POST',
     header: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': wx.getStorageSync('login-Cookie')
     },
     success (res) {
       console.log('>>>>>>>>>>>doMOCKLGet success')
-      console.log(res),
-      event(res);
+      console.log(res)
+      if (res.data && res.data.code == '1000000') {
+        event(res);
+      }else{
+        wx.showToast({
+          title: '系统繁忙,请重试',
+        })
+      }
     }
   })
 }

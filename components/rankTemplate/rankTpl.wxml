@@ -1,0 +1,74 @@
+<!--components/rankTemplate/rankTpl.wxml-->
+
+<template name="ATP-RANK">
+    <view class="titleName">ATP排名</view>
+
+    <view class="modify-time-view">
+          <view>更新：{{atpRankInfo.modifyTimeStr}} </view>
+    </view>
+
+    <view class="box-rank-view">
+      <van-row wx:for="{{atpRankInfo.records}}"  wx:key="*this"  custom-class="rank_tab_row">
+            <van-col custom-class="rank_tab_rank_value" >
+                <van-tag wx:if="{{item.rank <= 3}}" type="{{item.rank <= 1 ? 'warning' : 'success'}}"> {{item.rank}}</van-tag>
+                 <text wx:else> {{item.rank}} </text>
+            </van-col>
+
+            <van-col custom-class="rank_tab_player">
+                <van-col >
+                    <view class="rank_player_name">{{js.showFullName(item.chinaFullName)}}</view>
+                </van-col>
+            </van-col>
+      </van-row>
+    </view>
+
+</template>
+
+
+<template name="WTA-RANK">
+    <view class="titleName">WTA排名</view>
+    <view class="modify-time-view">
+          <view>更新：{{wtaRankInfo.modifyTimeStr}} </view>
+    </view>
+
+    <view class="box-rank-view">
+      <van-row wx:for="{{wtaRankInfo.records}}"  wx:key="*this"  custom-class="rank_tab_row">
+            <van-col custom-class="rank_tab_rank_value" >
+                <van-tag wx:if="{{item.rank <= 3}}" type="{{item.rank <= 1 ? 'warning' : 'success'}}"> {{item.rank}}</van-tag>
+                 <text wx:else> {{item.rank}} </text>
+            </van-col>
+
+            <van-col custom-class="rank_tab_player">
+                <van-col >
+                    <view class="rank_player_name">{{js.showFullName(item.chinaFullName)}}</view>
+                </van-col>
+            </van-col>
+      </van-row>
+    </view>
+
+</template>
+
+
+
+
+
+
+
+
+
+<wxs module="js">
+  function showFullName(name){
+    if(name.length >= 13){
+      if(name.indexOf("·") > 0){
+        var array = name.split("·");
+        name = array[array.length - 1]
+      }
+      return name.substring(0,12);
+    }else{
+      return name;
+    }
+  }
+  module.exports={
+    showFullName:showFullName
+  }
+</wxs>

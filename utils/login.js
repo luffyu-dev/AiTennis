@@ -1,4 +1,5 @@
 import {doPost} from './http/wxHttp-pre'; 
+// import {doPost} from './http/wxHttp-prod'; 
 
 // 封装的微信登录的方法
 export function doLogin(successEvent){
@@ -36,6 +37,7 @@ export function doLogin(successEvent){
                   loginUserInfo.uid = data.uid;
                   loginUserInfo.sessionKey = data.sessionKey;
                   wx.setStorageSync('loginUserInfo', loginUserInfo);
+                  wx.setStorageSync('login-Cookie', 'Login-Token=' + loginUserInfo.sessionKey)
                   console.info(">>>>>>setsuccess" )
                   console.info(wx.getStorageSync('loginUserInfo') )
                   successEvent(loginUserInfo);
@@ -72,6 +74,7 @@ export function isLogin(){
 // 退出登录
 export function outLogin(successEvent){
    wx.setStorageSync('loginUserInfo', null)
+   wx.setStorageSync('login-Cookie', null)
    successEvent();
 }
 

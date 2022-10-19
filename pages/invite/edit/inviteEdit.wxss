@@ -11,3 +11,18 @@
   margin-top: 10rpx;
 }
 
+.invite-bg-title{
+  max-width:6.2em;
+  min-width:6.2em;
+  padding: 20rpx;
+  color: #646566;
+  font-size: 14px;
+}
+.invite-bg-title i{
+  color: red;
+}
+
+.invite-bg-image{
+    padding: 20rpx;
+    margin-left: 30rpx;
+}

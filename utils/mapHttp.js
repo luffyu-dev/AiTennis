@@ -1,6 +1,5 @@
-// import {doPost} from './wxHttp'; 
-
 import {doPost} from './http/wxHttp-pre'; 
+// import {doPost} from './http/wxHttp-prod'; 
 
 
 
@@ -90,4 +89,40 @@ export const getStorage = (key,timout = 10) => {
   const date = new Date().getTime();
   if (date - obj.date > 60000 * timout) return null;
   return obj.value;
+}
+
+
+
+
+export  function chooseLocationMap(defaultLBS) {
+  if(defaultLBS == undefined){
+    defaultLBS = {
+      latitude: 22.586598,
+      longitude: 113.903341
+    }
+  }
+  const key = 'V2LBZ-OFS6W-RDQRL-RIFGS-Y7HFF-OUFI3'; // 使用在腾讯位置服务申请的key
+  const referer = 'AT网关'; //调用插件的app的名称
+  const location = JSON.stringify(defaultLBS);
+  const category = '网球场';
+
+  wx.navigateTo({
+    url: 'plugin://chooseLocation/index?key=' + key + '&referer=' + referer + '&location=' + location + '&category=' + category,
+    success: function(res) {
+      // 通过 eventChannel 向被打开页面传送数据
+      console.log("navigateTo");
+      console.log(res);
+    }
+  });
+}
+
+
+export  function openLocationMap(lbs) {
+  let latitude = Number(lbs.latitude);
+  let longitude = Number(lbs.longitude);
+  wx.openLocation({
+    latitude,
+    longitude,
+    scale: 14
+  })
 }

@@ -1,0 +1,128 @@
+<!--pages/invite/show/inviteShow.wxml-->
+<!--pages/inviteShare/inviteShare.wxml-->
+<!-- <view class="invite-step-box-card ">
+  <van-steps  steps="{{ create_invite_steps }}" active="{{ invite_steps_active }}" active-color="#005335"/>
+</view> -->
+<import src="/components/rankTemplate/rankTpl.wxml"/>
+
+<view class="show-box-card">
+    <!-- 图片 -->
+    <view class="show-image-box"> 
+      <image src="{{inviteInfo.inviteHomeImg}}" class="swiper-image show-home-image" mode="aspectFill"/>
+    </view>
+
+    <view class="show-invite-info-box"> 
+
+        <view class="box-card-full">
+         <!-- 大标题 -->
+          <van-row custom-class="invite-info-title" >
+            {{inviteInfo.inviteTitle}}
+          </van-row>
+
+          <!-- 报名相关信息 -->
+          <van-row>
+            <van-col custom-class="invite-join-user">
+              <van-row custom-class="invite-join-user-title">
+                  已报名人数: {{inviteInfo.joinNumber}} / {{inviteInfo.inviteNumber}}
+              </van-row>
+              <van-row custom-class="invite-join-user-list">
+
+                <image wx:for="{{inviteInfo.joinUserList}}"  wx:key="*this" bindtap="bindViewTap" class="user-avatar-mini invite-join-user-avatar" src="{{item.userAvatar}}" mode="cover"></image>
+                
+              </van-row>
+            </van-col>
+            <van-col custom-class="invite-info-state">
+                <view>{{inviteInfo.statusDesc}}</view>
+            </van-col>
+          </van-row>   
+        
+          <!-- 核心信息 -->
+            <van-row >
+              <van-cell custom-class="invite-info-cell" title="时间" icon="clock-o" value="{{inviteInfo.startEndTimeDesc ? inviteInfo.startEndTimeDesc:'未设置'}}"/>
+            </van-row>
+            <van-row>
+              <van-cell custom-class="invite-info-cell" title="地点" icon="location-o"  bind:click="chooseMap" value="{{inviteInfo.courtAddress ? inviteInfo.courtAddress:'未设置'}}" is-link/>
+            </van-row>
+            
+            <!-- 高级设置 -->
+            <!-- <scroll-view scroll-x class="advanced_setting_row">
+              <view class="advanced_setting_cell">
+                  <van-row custom-class="advanced_setting_cell_title">报名费用</van-row>
+                  <van-row custom-class="advanced_setting_cell_value">AA</van-row>
+              </view>
+            </scroll-view> -->
+            
+            <view wx:if="{{inviteInfo.remark}}" class="invite_remark_detail">
+              <text>{{inviteInfo.remark}}</text>
+            </view>
+        </view> 
+
+          <!-- 发起人信息 -->
+        <view class="box-card-full" style="min-height: 120rpx;">
+            <van-row custom-class="invite-join-user-title ">发起人</van-row>
+            <van-row>
+              <van-col custom-class="invite-main-user-avatar">
+                <image bindtap="bindViewTap" class="user-avatar" src="{{inviteInfo.sponsorInfo.userAvatar}}" mode="cover"></image>
+              </van-col>
+              <van-col custom-class="invite-main-user-name">
+                {{inviteInfo.sponsorInfo.userNick}}
+              </van-col>
+              <van-col custom-class="invite-main-user-option">
+                <van-icon name="bar-chart-o" />
+                <van-icon name="chat-o" />
+                <van-icon name="manager-o" />
+              </van-col>
+            </van-row>
+        </view>
+
+
+
+        <!-- 排名嵌入 -->
+        <view class="box-card-full">
+          <view class="box-card-title">
+              <navigator url="/pages/atp/rank/atpRank" hover-class="none">
+                本周世界排名 >
+            </navigator>
+          </view>
+          <van-row >
+            <van-col custom-class="invite_rank_view">
+              <template is="ATP-RANK" data="{{atpRankInfo}}"></template>
+            </van-col>
+            <van-col custom-class="invite_rank_view">
+              <template is="WTA-RANK" data="{{wtaRankInfo}}"></template>
+            </van-col>
+          </van-row>
+        </view>
+    </view> 
+
+
+
+    <view class="option-view">
+        <view class="option-home">
+          <navigator url="/pages/home/play/homePlay" hover-class="none" open-type="switchTab">
+              <van-icon name="wap-home-o" /> 主页
+          </navigator>
+        </view>
+        <view class="option-share">
+          <button class="option-share-btn"  open-type="share">
+            <van-icon name="share-o" />分享
+          </button>
+        </view>
+        <view class="option-join">
+          <van-row >
+            <button wx:if="{{is_join_user}}" class="consal_button_color option-join-btn" loading="{{submit_loading}}" disabled="{{submit_loading}}"   bindtap="consalJoinInviteInfoChecKLogin">
+                取消报名
+            </button>
+            <button wx:else class="basic_button_color option-join-btn" loading="{{submit_loading}}" disabled="{{submit_loading}}"  bindtap="joinInviteInfoCheckLogin">
+                点击报名
+            </button>
+          </van-row>
+          <van-count-down wx:if="{{inviteInfo.joinDeadlineCountTime && inviteInfo.joinDeadlineCountTime > 0}}" time="{{ inviteInfo.joinDeadlineCountTime }}" format="DD天 HH时 mm分 ss秒" style="padding: 0;"/>
+        </view>
+       
+    </view>
+
+
+</view>
+
+
