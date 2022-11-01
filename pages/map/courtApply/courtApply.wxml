@@ -24,6 +24,24 @@
       required
       />
 
+
+      <van-cell 
+      title="球场类型" 
+      value= "{{courtTypeInfo.selectDetail.name}}"
+      is-link
+      required
+      bind:click="openCourtType"
+      bind:change="onChange"
+      data-key="edit_train_data.courtType" />
+      <van-action-sheet
+            show="{{ courtTypeInfo.showSelect }}"
+            actions="{{ courtTypeInfo.selectData }}"
+            bind:close="closeCourtType"
+            bind:select="selectCourtType"/>
+
+
+
+
       <van-cell center title="球场数量">
             <van-stepper value="{{ apply_form.courtNum }}" 
                           bind:change="onChange"
@@ -41,13 +59,6 @@
         clearable
       />
 
-      <van-cell center title="环境评分">
-          <van-rate value="{{ apply_form.envScore }}" bind:change="onChange" data-key="apply_form.envScore"  />
-      </van-cell>
-
-      <van-cell center title="订场难度">
-          <van-rate value="{{ apply_form.reserveDiff }}" bind:change="onChange" data-key="apply_form.reserveDiff"  />
-      </van-cell>
 
       <van-field
         label="球场简介"
@@ -57,7 +68,9 @@
         data-key="apply_form.introduction" 
         clearable
         minHeight="50px"
+        autosize="{{ initTextareaSize }}"
       />
+
     </van-cell-group>
 
 

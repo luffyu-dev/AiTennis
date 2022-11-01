@@ -1,0 +1,72 @@
+<!--components/mapTemplate/mapTemplate.wxml-->
+<template name="COURT_MAP">
+
+  <view class="map-court-div-box" wx:for="{{tennisCourtList}}" wx:key="*this">
+      <van-row>
+            <!-- 图片 -->
+            <van-col custom-class="box-left-image">
+                <image src="{{item.homeImage}}" mode="aspectFill" class="box-left-image-info"></image>
+            </van-col>
+
+            <!-- 详细信息 -->
+            <van-col custom-class="box-right-info">
+                  <!-- 球场名称 -->
+                  <van-row custom-class="court-title-row" bindtap="onCourtLbs" data-index="{{item}}">
+                      <van-col custom-class="court-title-info">
+                        <navigator url="/pages/map/courtShow/courtShow?courtCode={{item.courtCode}}" hover-class="none">
+                        {{item.courtName}}
+                      </navigator>
+                      </van-col>
+
+                      <van-col custom-class= "court-title-right">
+                          <!-- <view class="coutr-collection-btn"><van-icon name="like-o" />收 藏</view> -->
+                          <view class="operator-btn">
+                          <van-icon name="like-o" />收 藏</view>
+                      </van-col>
+                  </van-row>
+
+                  <!-- 球场地址信息 -->
+                  <van-row custom-class="court-map-list" bindtap="onCourtLbs" data-index="{{item}}">
+                    <van-col custom-class="col-left">
+                      <van-icon name="location-o" custom-class="icon" />{{item.address}}
+                    </van-col>
+                    <van-col wx:if="item.lbsDistance" custom-class="col-right">
+                        {{tools.getlbs(item.lbsDistance)}}
+                    </van-col>
+                  </van-row>
+
+                  <!-- 时间段 -->
+                  <van-row custom-class="court-map-list">
+                     <van-icon name="clock-o" />{{item.openHours}}
+                  </van-row>
+
+                   <!-- 场地数量 -->
+                   <van-row custom-class="court-map-list">
+                    <van-icon name="gift-card-o" />4片硬底
+                  </van-row>
+
+            </van-col>
+      </van-row>
+  </view>
+
+</template>
+
+
+
+<wxs module="tools">
+
+function getlbs(lbs){
+  if(lbs < 1000){
+      return lbs+'m';
+  }else {
+    var lbsKm = lbs * 0.001;
+    var lbsN = lbsKm.toFixed(1)
+    console.log("lbsKm");
+    console.log(lbsN);
+    return lbsN+'km';
+  }
+}
+module.exports = {
+  getlbs: getlbs
+}
+</wxs>

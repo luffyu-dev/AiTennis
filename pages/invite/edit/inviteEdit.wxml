@@ -192,7 +192,7 @@
 </view>
 
 <view class="steps_save_button_view">
-  <button class="basic_button_color" bindtap="saveAndCreateInvite">保存到下一步</button>
+  <button class="basic_button_color" bindtap="saveAndCreateInvite">保存并发布</button>
 </view>
 
 <van-popup

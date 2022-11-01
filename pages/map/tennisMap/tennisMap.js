@@ -58,6 +58,17 @@ Page({
   },
 
   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+    return {
+        title: "AT网球-附近网球场",
+        path:"/pages/map/tennisMap/tennisMap",
+        imageUrl:"",
+    }
+  },
+
+  /**
    * 获取的地址是有缓存的
    */
   getCacheUserLocation(){
@@ -95,6 +106,9 @@ Page({
 
   // 查询附近的网球球场
   queryTennisCourt(params){
+    wx.showLoading({
+      title: '加载中',
+    });
     console.log("queryTennisCourt");
     params['district']='';
     console.log(params);
@@ -122,6 +136,7 @@ Page({
             isCourtLoading: false
           }),
           _this.addMark(markPositions);
+          wx.hideLoading();
         }
     })
   },
@@ -207,6 +222,21 @@ Page({
       this.setData({
         onLocation: positions
       })
+  },
+
+  onSearchByKey(operator){
+      let _this = this;
+      let _searchValue = operator.detail;
+      getNowUserLocation(true,(res)=>{
+          _this.setData({
+            userLocation : res,
+            onLocation: res
+          });
+          res.searchMapKey = _searchValue;
+          this.queryTennisCourt(res);
+          this.addUserMark(res);
+      });
+      console.log(operator)
   }
 
 })

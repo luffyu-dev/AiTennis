@@ -63,6 +63,17 @@ Page({
     scoreArray:[0,15,30,40,'AD',45],
   },
 
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+    return {
+        title: "AT网球-专业记分板",
+        path:"/pages/scoreTool/scoreTool",
+        imageUrl:"",
+    }
+  },
+
 
   onChange(event) {
     const { key } = event.currentTarget.dataset;

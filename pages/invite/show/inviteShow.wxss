@@ -142,7 +142,7 @@
   line-height: 80rpx;
   text-align: center;
   border-right: 1px solid rgb(240, 238, 238);
-  font-size: 35rpx;
+  font-size: rpx;
 }
 
 .option-share{
@@ -171,7 +171,7 @@
   display: inline-block;
   background-color: white;
   font-weight: normal;
-  font-size: 35rpx;
+  font-size: 33rpx;
 }
 
 .option-join-btn{

@@ -1,4 +1,6 @@
 <!--pages/match/match.wxml-->
+<import src="/components/mapTemplate/mapTemplate.wxml"/>
+
 <view class="content-info-bg top-bg-container"/>
 
 <scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
@@ -109,31 +111,8 @@
     </van-row>
    
     <view>
-        <view class="image-title-box" wx:for="{{tennisCourtList}}" wx:key="*this">
-          <van-row>
-                <van-col custom-class="box-left-image">
-                    <!-- <van-image  fit="widthFix" custom-class="box-left-image-ifo" height=30%  src=" {{item.imgUrls[0]}}" /> -->
-                    <image src="{{item.homeImage ? item.homeImage:'/image/home/court_home.jpg'}}" mode="aspectFill" class="box-left-image-info"></image>
-                </van-col>
-                <van-col custom-class="box-right-info">
-                      <van-row custom-class="font-size-title">
-                         {{item.courtName}}
-                      </van-row>
-
-                      <van-row custom-class="my-map-area-info">
-                          <van-col custom-class="my-map-score-left">
-                              <van-rate custom-class="rate-position"  size="{{ 13 }}" value="{{item.score}}" readonly/>
-                          </van-col>
-                          <van-col wx:if="item.lbsDistance" custom-class="my-map-lbs-right">
-                            距您 {{tools.getlbs(item.lbsDistance)}}
-                          </van-col>
-                      </van-row>
-
-                      <van-row custom-class="my-map-address">
-                        <van-icon name="location" custom-class="icon"/>{{item.address}}
-                      </van-row>
-                </van-col>
-          </van-row>
+        <view class="image-title-box">
+          <template is="COURT_MAP" data="{{tennisCourtList}}"></template>
         </view>
 
         <van-row custom-class="loading-search">

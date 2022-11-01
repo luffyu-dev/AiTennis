@@ -100,12 +100,18 @@
     <view class="option-view">
         <view class="option-home">
           <navigator url="/pages/home/play/homePlay" hover-class="none" open-type="switchTab">
-              <van-icon name="wap-home-o" /> 主页
+              <van-icon name="wap-home" /> 主页
           </navigator>
         </view>
+        <view class="option-home" wx:if="is_sponsor_user">
+          <button  class="option-share-btn" bindtap="backForEdit">
+            <van-icon name="setting" /> 设置
+          </button>
+        </view>
+
         <view class="option-share">
           <button class="option-share-btn"  open-type="share">
-            <van-icon name="share-o" />分享
+            <van-icon name="share" />分享
           </button>
         </view>
         <view class="option-join">

@@ -8,7 +8,7 @@ var qqmapsdk = new QQMapWX({
   key: 'DBXBZ-UNOCX-AOC4E-TLBFC-2LO5S-MRB34'
 });
 
-// atp的排名信息搜索
+// 搜索球场信息
 export function searchByRegion(params,succEvent){
     doPost(
       "at-map-api",
@@ -18,8 +18,18 @@ export function searchByRegion(params,succEvent){
     )
 }
 
+// 搜索球场信息
+export function getCourtInfo(params,succEvent){
+  doPost(
+    "at-map-api",
+    "/at-api/tennis-court/info",
+    params,
+    succEvent
+  )
+}
 
-// atp的排名信息搜索
+
+// 提交球场数据
 export function applyTennisCourt(params,succEvent){
   doPost(
     "at-map-api",

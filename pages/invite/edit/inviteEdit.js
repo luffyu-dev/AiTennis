@@ -1,10 +1,12 @@
 import {wxDoUploadImage,wxDoDeleteUploadImage} from '../../../utils/imageHttp'; 
 import {formatTimeTwo,navigateBeforCheckLogin} from '../../../utils/util'; 
 
-import {applyInvite} from '../../../utils/inviteHttp'; 
+import {applyInvite,queryInvite} from '../../../utils/inviteHttp'; 
 const chooseLocation = requirePlugin('chooseLocation');
 
 import {chooseLocationMap} from '../../../utils/mapHttp'
+import {getLoginUser} from '../../../utils/login';
+
 
 // pages/inviteShare/inviteShare.js
 Page({
@@ -27,7 +29,6 @@ Page({
     },
     create_invite_steps: [
       {desc: '基本信息'},
-      {desc: '预览'},
       {desc: '分享邀请'}
     ],
     invite_steps_active:0,
@@ -65,6 +66,19 @@ Page({
       ['initShowTime.setFieldName']:key
     });
   },
+
+
+    /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    console.log("onLoad");
+    if (options.inviteCode) {
+      this.queryEditInviteInfo(options);
+    }
+},
+
+
   // 关闭时间
   onCloseTime(){
     this.setData({ show_time: false });
@@ -171,7 +185,15 @@ Page({
   },
   // 选择地图
   chooseMap(){
-    chooseLocationMap()
+    let _edit_train_data = this.data.edit_train_data;
+    if (_edit_train_data.courtLatitude && _edit_train_data.courtLongitude) {
+      let params = {};
+      params.latitude = _edit_train_data.courtLatitude;
+      params.longitude = _edit_train_data.courtLongitude;
+      chooseLocationMap(params)
+    }else{
+      chooseLocationMap()
+    }
   },
 
   // 数据绑定
@@ -270,8 +292,39 @@ Page({
     this.setData({
       advanced_setting: event.detail,
     });
+  },
+
+
+   // 查询详情
+   queryEditInviteInfo(queryEditParam){
+     let _queryEditParam = queryEditParam;
+     if (_queryEditParam === undefined || _queryEditParam.inviteCode === undefined) {
+        console.log("未配置编辑的code");
+        return;
+     }
+    wx.showLoading({
+      title: '加载中',
+    });
+    let _this = this;
+    let _loginUser = getLoginUser();
+    let loiginUid = _loginUser ? _loginUser.uid : -1;
+    queryInvite(
+      _queryEditParam,
+      (res) => {
+          let _inviteInfo = res.data.data;
+          if (_inviteInfo.sponsorInfo && loiginUid === _inviteInfo.sponsorInfo.uid) {
+           _inviteInfo.region = _inviteInfo.courtAddress;
+           let _homePicList = [];
+           _homePicList.push(_inviteInfo.inviteHomeImg);
+           _inviteInfo.homePicList = _homePicList;
+           _this.setData({
+              edit_train_data:  _inviteInfo
+            });
+          }
+          wx.hideLoading();
+        }
+      );
   }
-  
 
 
 })

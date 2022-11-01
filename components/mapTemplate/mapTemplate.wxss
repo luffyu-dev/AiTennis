@@ -1,0 +1,65 @@
+/* components/mapTemplate/mapTemplate.wxss */
+
+
+/* pages/map/courtShow/index.wxss */
+.map {
+  width: 100%;
+  height: 600rpx;
+}
+
+.map-court-div-box{
+  padding: 20rpx 0;
+  background-color: #ffffff;
+  margin-top: 10rpx;
+  width: 100%;
+  border-radius:5rpx; 
+}
+
+
+
+
+
+.court-title-row{
+
+}
+
+.court-title-info{
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  width: 65%;
+}
+
+
+.court-title-right{
+  width: 35%;
+  text-align: right;
+  height: 50rpx;
+  color: #005335;
+  line-height:50rpx;
+}
+
+
+
+
+
+.court-map-list{
+  margin-top: 10rpx;
+  width: 100%;
+  font-size: 25rpx;
+  color: #9a9e9c;
+  line-height: 40rpx;
+}
+.court-map-list .col-left{
+  width: 65%;
+}
+.court-map-list .col-right{
+  width: 35%;
+  padding: 0 10rpx;
+  text-align: right;
+  font-size: 24rpx;
+}
+.court-map-list .van-icon{
+  margin-right: 10rpx;
+}
+

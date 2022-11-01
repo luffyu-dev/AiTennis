@@ -1,2 +1,92 @@
 <!--pages/map/courtShow/courtShow.wxml-->
-<text>pages/map/courtShow/courtShow.wxml</text>
+<view class="show-box-card">
+    <swiper class="swiper-container" indicator-dots="true" autoplay="false" interval="5000" >
+        <swiper-item>
+            <image src="{{courtInfoDetail.homeImage}}" class="swiper-image" mode="scaleToFill"></image>
+        </swiper-item>
+        <swiper-item wx:if="{{courtInfoDetail.envImageList}}" wx:for="{{courtInfoDetail.envImageList}}"  wx:key="*this">
+          <image src="{{item}}" class="swiper-image" mode="scaleToFill"></image>
+        </swiper-item>
+    </swiper>
+
+
+    <view class="show-court-info-box">
+      <view class="box-card-full" style="min-height: 150rpx;">
+            <van-row> 
+                <van-col custom-class="court-title">
+                  {{courtInfoDetail.courtName }} 
+                </van-col>
+                <van-col custom-class="court-lbs">
+                  距你{{tools.getlbs(item.lbsDistance)}}
+                </van-col>
+            </van-row>
+            <van-row custom-class="court-location-row"> 
+              <van-col custom-class="court-location">
+                  <van-icon name="location-o" custom-class="icon" />{{courtInfoDetail.province}}{{courtInfoDetail.city}}{{courtInfoDetail.district}}{{courtInfoDetail.address}} 
+              </van-col>
+              <van-col custom-class="court-location-operator">
+                <van-row > <van-icon name="share" /></van-row>
+                <van-row ><text>到这儿去</text></van-row>
+              </van-col>
+            </van-row>
+      </view>
+   
+      <view class="box-card-full">
+          基础信息
+      </view>
+
+      <view class="box-card-full">
+        简介:{{courtInfoDetail.introduction}}
+      </view>
+
+    </view>
+
+    <view class="option-view-o">
+        <view class="option-1">
+              <van-row> <van-icon name="star-o" /></van-row>
+              <van-row> 收藏 </van-row>
+        </view>
+        <view class="option-1">
+              <van-row> <van-icon name="share" /></van-row>
+              <van-row> 分享 </van-row>
+        </view>
+        <view class="option-1">
+              <van-row> <van-icon name="warning" /></van-row>
+              <van-row> 反馈 </van-row>
+        </view>
+        <view class="option-1">
+              <van-row> <van-icon name="map-marked" /></van-row>
+              <van-row> 订场 </van-row>
+        </view>
+        <view class="option-btn-view">
+          <van-row >
+            <button class="basic_button_color option-btn"   bindtap="joinInviteInfoCheckLogin">
+                到这儿去
+            </button>
+          </van-row>
+        </view>
+    </view>
+</view>
+
+
+
+<wxs module="tools">
+
+function getlbs(lbs){
+  if(lbs == undefined){
+    return '0km';
+  }
+  if(lbs < 1000){
+      return lbs+'m';
+  }else {
+    var lbsKm = lbs * 0.001;
+    var lbsN = lbsKm.toFixed(1)
+    console.log("lbsKm");
+    console.log(lbsN);
+    return lbsN+'km';
+  }
+}
+module.exports = {
+  getlbs: getlbs
+}
+</wxs>

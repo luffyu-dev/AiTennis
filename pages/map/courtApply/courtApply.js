@@ -9,6 +9,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    initTextareaSize:{
+      "minHeight" : 100 
+    },
+    courtTypeInfo:{
+      showSelect:false,
+      selectDetail:{ name: '室外硬底' ,type:'10'},
+      selectData:[
+        { name: '室外硬底',type:'10'},
+        { name: '风雨棚' ,type:'20'},
+        { name: '室内场' ,type:'30'},
+        { name: '红土/沙地场' ,type:'40'}
+      ]
+    },
     courtTypeColumns: [
       { text: '全部商品', value: 0 },
       { text: '新款商品', value: 1 },
@@ -230,6 +243,29 @@ Page({
          })
       }
     });
-  }
+  },
+
+
+  openCourtType(params){
+    let _courtInfo = this.data.courtTypeInfo;
+    _courtInfo.showSelect = true;
+    this.setData({
+      courtTypeInfo:_courtInfo
+    })
+  },
+  closeCourtType(params){
+    let _courtInfo = this.data.courtTypeInfo;
+    _courtInfo.showSelect = false;
+    this.setData({
+      courtTypeInfo:_courtInfo
+    })
+  },
+  selectCourtType(params) {
+    let _courtInfo = this.data.courtTypeInfo;
+    _courtInfo.selectDetail = params.detail;
+    this.setData({
+      courtTypeInfo: _courtInfo
+    })
+  },
 
 })

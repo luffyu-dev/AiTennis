@@ -2,6 +2,7 @@ import {queryInvite, applyClose, joinInvite , cancelJoin} from '../../../utils/i
 import { searchAtpRank, searchWtaRank} from '../../../utils/atpHttp'; 
 import {isLogin,doLogin,getLoginUser} from '../../../utils/login';
 import {openLocationMap} from '../../../utils/mapHttp'
+import {redirectBeforCheckLogin} from '../../../utils/util'; 
 
 // pages/invite/show/inviteShow.js
 Page({
@@ -22,7 +23,7 @@ Page({
     invite_steps_active:1,
     submit_loading:false,
     queryParam:{
-      inviteCode: "ICXMALEBeaSwQy3t0m"
+     
     },
     inviteInfo:{
 
@@ -35,10 +36,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-      // console.log("onLoad");
-      // this.setData({
-      //   queryParam: options
-      // })
+      console.log("onLoad");
+      this.setData({
+        queryParam: options
+      })
   },
 
   /**
@@ -221,6 +222,11 @@ Page({
         openLocationMap(defaultLBS);
       }
     },
+
+    backForEdit(){
+      let _inviteInfo = this.data.inviteInfo; 
+      redirectBeforCheckLogin("/pages/invite/edit/inviteEdit?inviteCode="+_inviteInfo.inviteCode);
+    }
 
 
 })

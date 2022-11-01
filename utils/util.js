@@ -21,6 +21,7 @@ const formatNumber = n => {
 module.exports = {
   formatTime,
   navigateBeforCheckLogin,
+  redirectBeforCheckLogin,
   formatTimeTwo
 }
 
@@ -32,6 +33,22 @@ function navigateBeforCheckLogin(goUrl){
   } else {
     doLogin((res)=>{
       wx.navigateTo({
+        url: goUrl,
+      })
+    });
+  }
+}
+
+
+
+function redirectBeforCheckLogin(goUrl){
+  if(isLogin()){
+    wx.redirectTo({
+      url: goUrl,
+    })
+  } else {
+    doLogin((res)=>{
+      wx.redirectTo({
         url: goUrl,
       })
     });

@@ -1,15 +1,16 @@
 {
   "pages": [
-    "pages/invite/show/inviteShow",
-    "pages/invite/edit/inviteEdit", 
-  
-
     "pages/home/play/homePlay",
 
+    "pages/map/tennisMap/tennisMap",
+    "pages/map/courtShow/courtShow",
+
+    "pages/invite/show/inviteShow",
     "pages/home/at/homeAt",
+    "pages/invite/edit/inviteEdit",
+
     "pages/home/user/user",
     "pages/invite/share/inviteShare",
-
     "pages/play/play",
     "pages/atp/rank/atpRank",
     "pages/match/add/addMatch",
@@ -18,9 +19,8 @@
     "pages/matchInfo/matchInfo",
     "pages/atp/player/player",
     "pages/map/courtApply/courtApply",
-    "pages/map/tennisMap/tennisMap",
-    "pages/map/courtShow/courtShow",
-    "components/rankTemplate/rankTpl"
+    "components/rankTemplate/rankTpl",
+    "components/mapTemplate/mapTemplate"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,7 +37,7 @@
     "list": [
       {
         "pagePath": "pages/home/play/homePlay",
-        "text": "发起赛事"
+        "text": "主页"
       },
       {
         "pagePath": "pages/home/user/user",
