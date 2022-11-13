@@ -1,15 +1,14 @@
 {
   "pages": [
+    
+    "pages/atp/player/player",
+    "pages/home/user/user",
     "pages/home/play/homePlay",
-
     "pages/map/tennisMap/tennisMap",
     "pages/map/courtShow/courtShow",
-
     "pages/invite/show/inviteShow",
     "pages/home/at/homeAt",
     "pages/invite/edit/inviteEdit",
-
-    "pages/home/user/user",
     "pages/invite/share/inviteShare",
     "pages/play/play",
     "pages/atp/rank/atpRank",
@@ -17,10 +16,12 @@
     "pages/match/share/shareMatch",
     "pages/scoreTool/scoreTool",
     "pages/matchInfo/matchInfo",
-    "pages/atp/player/player",
+
     "pages/map/courtApply/courtApply",
     "components/rankTemplate/rankTpl",
-    "components/mapTemplate/mapTemplate"
+    "components/mapTemplate/mapTemplate",
+    "components/calendarTpl/calendarTpl",
+    "components/atpPlayerTpl/atpPlayerTpl"
   ],
   "window": {
     "backgroundTextStyle": "light",

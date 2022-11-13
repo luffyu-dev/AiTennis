@@ -1,7 +1,7 @@
 // pages/map/courtShow/courtShow.js
 
 import { getCourtInfo } from '../../../utils/mapHttp'; 
-
+import {openLocationMap} from '../../../utils/mapHttp'
 
 
 Page({
@@ -45,5 +45,18 @@ Page({
         wx.hideLoading();
       }
     })
-  }
+  },
+
+   // 选择地图
+   chooseMap(){
+    console.log(">>>>>>>>>>>>>>>>>>")
+    let _courtInfoDetail = this.data.courtInfoDetail; 
+    console.log(_courtInfoDetail);
+    if (_courtInfoDetail.latitude && _courtInfoDetail.longitude) {
+      let defaultLBS = {};
+      defaultLBS.latitude = Number(_courtInfoDetail.latitude);
+      defaultLBS.longitude = Number(_courtInfoDetail.longitude);
+      openLocationMap(defaultLBS);
+    }
+  },
 })

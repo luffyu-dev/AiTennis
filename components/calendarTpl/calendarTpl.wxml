@@ -1,0 +1,49 @@
+<view class="calendar">
+  <view class="title flex">
+    <view class="flex atCalendarTitle">
+      <picker value="{{selectDay.year+'-'+(selectDay.month+1)}}" bindchange="editMonth" mode="date" fields="month" class="year-month">
+        {{selectDay.year}}年{{selectDay.month>8?selectDay.month+1:"0"+(selectDay.month+1)}}月网球日历
+        <van-icon name="arrow-down" />
+      </picker>
+      <!-- <view class="last-icon" bindtap="lastMonth"> </view>
+      <view class="next-icon" bindtap="nextMonth"> </view> -->
+    </view>
+    <!-- catchtap="openChange" -->
+    <view class="flex open">
+      <view>详情<van-icon name="arrow" /></view>
+    </view>
+  </view>
+
+  <!-- 日历头部 -->
+  <view class="flex-around calendar-week">
+    <view class="view">日</view>
+    <view class="view">一</view>
+    <view class="view">二</view>
+    <view class="view">三</view>
+    <view class="view">四</view>
+    <view class="view">五</view>
+    <view class="view">六</view>
+  </view>
+
+  <!-- 日历主体 -->
+  <view class="calendar-main">
+    <view class="date-group" style="height:{{open? dateList.length/7*72 : 72*2}}rpx;">
+      <view class="flex-start flex-wrap date-transform" style="transform: translateY({{open?0:-72*(transform>=1?transform-1:transform)}}rpx);">
+        <view wx:for="{{dateList}}" wx:key="dateList" class="day">
+          <view class="bg {{(item.year === selectDay.year && item.month === selectDay.month) ?'': 'other-month'}} {{item.dateString === todayStr?'select':''}} {{item.spot ? 'at-lv2':''}}" catchtap="selectChange" data-date="{{item.date}}" data-year="{{item.year}}" data-month="{{item.month}}" data-date-string="{{item.dateString}}">
+            {{item.date}}
+          </view>
+          <view class="spot" wx:if="{{item.spot}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view catchtap="openChange" class="flex list-open">
+    <!-- <view class="icon {{open?'fold':'unfold'}}">sdsd</view> -->
+    <van-icon class="icon" name="{{ open?'arrow-up':'arrow-down'}}" />
+  </view>
+
+
+</view>

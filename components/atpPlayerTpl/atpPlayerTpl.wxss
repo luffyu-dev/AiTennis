@@ -1,0 +1,118 @@
+/* pages/atp/player/player.wxss */
+.van-tabs-view{
+  background-color: #005335;
+  color: #ffffff;
+}
+
+.player_tab_row{
+  padding: 20rpx 0;
+  background-color: #ffffff;
+  margin-top: 10rpx;
+  width: 96%;
+  margin-left: 2%;
+  border-radius:15rpx; 
+}
+
+.player_info_row{
+}
+
+
+.row_player_avator{
+  width: 20%;
+  height: 100rpx;
+  text-align: center;
+}
+
+.user-player-avator{
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10%;
+  margin-top: 7rpx;
+}
+
+
+.row_player_info{
+  width: 77%;
+  min-height: 100rpx;
+  margin-top: 7rpx;
+}
+
+.row_player_name_title{
+ font-size: 35rpx;
+ font-weight: bold;
+}
+
+.row_player_name_title_name{
+  width: 80%;
+}
+.row_player_name_title_button{
+  width: 20%;
+  text-align: right;
+}
+
+.row_player_english_name_title{
+  font-size: 20rpx;
+  color: #adabab
+ }
+
+
+ .row_player_career{
+  margin-top: 10rpx;
+}
+
+
+.row_player_career_title{
+  width: 20%;
+  height: 150rpx;
+  text-align: center;
+}
+
+.row_player_career_info{
+  width: 80%;
+  border-top: 2rpx solid #f5f2f2;
+  line-height: 50rpx;
+}
+.player_career_info_num .van-col{
+  width: 50%;
+}
+
+
+ .player_tag_row{
+    border-top: 2rpx solid #f5f2f2;
+    margin-top: 10rpx;
+    padding: 10rpx 0;
+ }
+ 
+ .player_tag{
+  font-size: 12px;
+  background-color: #f1d2c3b4;
+  color: #f95607;
+  padding: 5rpx 13rpx;
+  margin-right: 10rpx;
+  border-radius:3rpx; 
+ }
+
+
+ .player_tag_gray{
+  font-size: 12px;
+  padding: 5rpx 13rpx;
+  background-color: #e7e5e4ab;
+  color: #413f3f;
+  margin-right: 10rpx;
+  border-radius:3rpx; 
+ }
+
+ .player_top_desc{
+  font-size: 20rpx;
+  color: #adabab
+ }
+
+ .player_top_data{
+  font-size: 45rpx;
+  color: #005335;
+  font-weight: bold;
+ }
+
+
+ 

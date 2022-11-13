@@ -21,7 +21,7 @@
                       <van-col custom-class= "court-title-right">
                           <!-- <view class="coutr-collection-btn"><van-icon name="like-o" />收 藏</view> -->
                           <view class="operator-btn">
-                          <van-icon name="like-o" />收 藏</view>
+                          <van-icon name="like-o" /> 收 藏</view>
                       </van-col>
                   </van-row>
 

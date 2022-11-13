@@ -23,7 +23,7 @@ Page({
     invite_steps_active:1,
     submit_loading:false,
     queryParam:{
-     
+      inviteCode:"ICXK2Jlp-Kitm4CHzS"
     },
     inviteInfo:{
 
@@ -37,9 +37,9 @@ Page({
    */
   onLoad(options) {
       console.log("onLoad");
-      this.setData({
-        queryParam: options
-      })
+      // this.setData({
+      //   queryParam: options
+      // })
   },
 
   /**

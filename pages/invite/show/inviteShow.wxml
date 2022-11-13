@@ -97,23 +97,29 @@
 
 
 
-    <view class="option-view">
-        <view class="option-home">
+    <view class="option-view-o">
+        <view class="option-1">
           <navigator url="/pages/home/play/homePlay" hover-class="none" open-type="switchTab">
-              <van-icon name="wap-home" /> 主页
+              <!-- <van-icon name="wap-home" /> 主页 -->
+                <view><van-icon name="wap-home" /></view>
+                <view>主页</view>
           </navigator>
         </view>
-        <view class="option-home" wx:if="is_sponsor_user">
-          <button  class="option-share-btn" bindtap="backForEdit">
-            <van-icon name="setting" /> 设置
+        
+        <view class="option-1" wx:if="is_sponsor_user">
+          <button  class="option-2" bindtap="backForEdit">
+                <view><van-icon name="setting" /></view>
+                <view>设置</view>
           </button>
         </view>
 
-        <view class="option-share">
-          <button class="option-share-btn"  open-type="share">
-            <van-icon name="share" />分享
+        <view class="option-1">
+          <button class="option-2"  open-type="share">
+                <view><van-icon name="share" /></view>
+                <view>分享</view>
           </button>
         </view>
+
         <view class="option-join">
           <van-row >
             <button wx:if="{{is_join_user}}" class="consal_button_color option-join-btn" loading="{{submit_loading}}" disabled="{{submit_loading}}"   bindtap="consalJoinInviteInfoChecKLogin">

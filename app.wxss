@@ -87,7 +87,8 @@ page {
 }
 
 .content-info-bg{
-  background-color: #005335;
+  /* background-color: #005335; */
+  background: -webkit-linear-gradient(top,#005335,#005335,#fcfdfd);
 }
 
 .top-bg-container{
@@ -294,19 +295,29 @@ page {
 
 .operator-btn{
   display: inline-block;
-  width: 100rpx;
+  min-width: 100rpx;
   height: 30rpx;
   text-align: center;
   line-height: 30rpx;
   font-size: 23rpx;
   font-weight: bold;
   border: 1px solid #005335;
-  border-radius: 10px;
-  padding: 5rpx 0;
+  color: #005335;
+  border-radius: 18rpx;
+  padding: 5rpx;
 }
 
-.operator-btn .van-icon{
-  margin-right: 5rpx;
+.operator-btn-finished{
+  min-width: 100rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 23rpx;
+  font-weight: bold;
+  border-radius: 18rpx;
+  padding: 5rpx;
+  background-color: #f6f6f6 !important;
+  color: #999 !important;
 }
 
 
@@ -339,10 +350,22 @@ page {
   font-weight: bold;
 }
 
+.option-2{
+    padding: 0 !important;
+    width: 100% !important;
+    height: 80rpx;
+    font-size: 28rpx;
+    text-align: center;
+    background-color: white;
+}
+
 .option-1 .van-icon{
     font-size: 40rpx;
 }
 
+.option-2 .van-icon{
+  font-size: 40rpx;
+}
 
 .option-btn-view{
   width: 300rpx;
@@ -355,3 +378,4 @@ page {
   width: 200rpx !important;
   margin-top: 5rpx;
 }
+

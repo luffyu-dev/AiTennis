@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "calendar":"/components/calendarTpl/calendarTpl",
+    "ch-canvas": "/components/ch-canvas/ch-canvas"
+  },
   "navigationBarBackgroundColor": "#005335",
   "navigationBarTitleText": "个人中心",
   "navigationBarTextStyle": "white"

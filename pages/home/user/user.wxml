@@ -3,7 +3,7 @@
 
 <scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
 
-    <view class="box-card user-data-info">
+    <view class="box-card-full user-data-info">
         <!-- 已登录 -->
         <view wx:if="{{loginUserInfo && loginUserInfo.isLogin}}" class="user-basic-data">
             <view ><image src="{{loginUserInfo.avatarUrl}}" class="user-info-avatar"></image></view>
@@ -14,10 +14,71 @@
             <view v-else ><image src="/image/avator/default_avator.jpeg" class="user-info-avatar"></image></view>
             <view bindtap="inLogin">请登录</view>
         </view>
+
+        <van-row custom-class="user-at-view">
+          <van-col custom-class="user-at-info">
+              <view class="user-at-item">
+                <van-row custom-class="line-desc">NTRP</van-row>
+                <van-row>
+                  <text class="line-data">{{userAtData.ntrp}}</text>
+                </van-row>
+              </view>
+              <view class="user-at-item">
+                <van-row custom-class="line-desc">网龄</van-row>
+                <van-row >
+                  <text class="line-data">{{userAtData.tennisAge.yearData}}</text>
+                  <text class="line-desc">年</text>
+                  <text class="line-data">{{userAtData.tennisAge.monthDate}}</text>
+                  <text class="line-desc">月</text>
+                </van-row>
+              </view>
+              <view class="user-at-item">
+                <van-row custom-class="line-desc">共训练</van-row>
+                <van-row >
+                  <text class="line-data">{{userAtData.trainInfo.totalHours}}</text>
+                  <text class="line-desc">h</text>
+                </van-row>
+              </view>
+              <view class="user-at-item">
+                <van-row custom-class="line-desc">本周训练</van-row>
+                <van-row >
+                  <text class="line-data">{{userAtData.trainInfo.weekHours}}</text>
+                  <text class="line-desc">h</text>
+                </van-row>
+              </view>
+          </van-col>
+          <van-col custom-class="user-at-radar">
+            <ch-canvas canvasId='radar' id='radar'></ch-canvas>
+          </van-col>
+        </van-row>
     </view>
-        
-    <button class="basic_button_color" bindtap="outLogin">退出登录</button>
 
+    <!-- defaultDate为空的时候 就是今天 2022/12/12 -->
+    <calendar defaultDate="" spot="{{atCalendarInfo.spot}}" bind:dateChange="dateChange"></calendar>
 
+    <view class="box-card-full normal-operator"> 
+        <view class="box-card-title">常用功能</view>
+        <van-row >
+          <van-cell custom-class="invite-info-cell" title="参与的邀约" icon="clock" is-link/>
+        </van-row>
+        <van-row>
+          <van-cell custom-class="invite-info-cell" title="收藏的球场" icon="map-marked"  
+          bind:click="chooseMap"  is-link/>
+        </van-row>
+        <van-row>
+          <van-cell custom-class="invite-info-cell" title="关注的球员" icon="friends"  bind:click="chooseMap"  is-link/>
+        </van-row>
+        <van-row>
+          <van-cell custom-class="invite-info-cell" title="个人设置" icon="setting"  bind:click="chooseMap"  is-link/>
+        </van-row>
+        <van-row>
+          <van-cell custom-class="invite-info-cell" title="关注公众号" icon="bookmark"  bind:click="chooseMap"  />
+        </van-row>
+        <van-row>
+          <van-cell custom-class="invite-info-cell" title="联系我们" icon="comment"  bind:click="chooseMap"  />
+        </van-row>
+    </view>
+
+    <button class="basic_button_color outLogin-row" bindtap="outLogin">退出登录</button>
 
 </scroll-view>

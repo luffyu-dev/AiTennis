@@ -33,3 +33,60 @@
   border-radius: 0rpx 0rpx 40% 40% / 0rpx 0rpx 50rpx 50rpx !important;
 }
 
+.van-cell__title{
+  font-size: 30rpx;
+  padding: 20rpx 0;
+}
+
+.van-cell__left-icon-wrap{
+  font-size: 30rpx !important;
+  padding: 18rpx 0;
+}
+
+.van-cell__right-icon-wrap{
+  font-size: 30rpx;
+  padding: 20rpx 0;
+}
+.normal-operator{
+  margin-top: 20rpx;
+}
+
+.outLogin-row{
+  margin-bottom: 30rpx;
+}
+
+.user-at-view{
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+
+.user-at-info{
+  width: 52%;
+  min-height: 200rpx;
+}
+
+.user-at-radar{
+  width: 45%;
+  margin-left: 1%;
+  border-left: 1rpx solid #d1d2d4;
+}
+
+.user-at-item{
+  display: inline-block;
+  width: 45%;
+  height: 130rpx;
+  margin-left: 3%;
+}
+
+.user-at-item .line-data{
+  font-size: 45rpx;
+  color: #000;
+  font-weight: bold;
+  padding: 10rpx 10rpx 10rpx 0;
+}
+
+.user-at-item .line-desc{
+  font-size: 28rpx;
+  color: #87888a;
+  padding: 10rpx 0 0 0;
+}
