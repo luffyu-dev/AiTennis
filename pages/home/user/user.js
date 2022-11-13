@@ -1,6 +1,7 @@
 
 // pages/user/user.js
 import { doLogin, getLoginUser , outLogin, isLogin} from '../../../utils/login'; 
+import {navigateBeforCheckLogin} from '../../../utils/util'; 
 
 Page({
  
@@ -150,7 +151,11 @@ Page({
         this.setData({
           atCalendarInfo:_atCalendarInfo
         })
-    }
+    },
 
+    // 跳转方法
+  navigateToCheckLogin: function(goUrl){
+    navigateBeforCheckLogin(goUrl.currentTarget.dataset.src);
+  }
   
 })

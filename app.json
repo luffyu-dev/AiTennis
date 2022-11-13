@@ -1,9 +1,9 @@
 {
   "pages": [
-    
+    "pages/home/play/homePlay",
     "pages/atp/player/player",
     "pages/home/user/user",
-    "pages/home/play/homePlay",
+    
     "pages/map/tennisMap/tennisMap",
     "pages/map/courtShow/courtShow",
     "pages/invite/show/inviteShow",
