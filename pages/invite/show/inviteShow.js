@@ -37,9 +37,9 @@ Page({
    */
   onLoad(options) {
       console.log("onLoad");
-      // this.setData({
-      //   queryParam: options
-      // })
+      this.setData({
+        queryParam: options
+      })
   },
 
   /**

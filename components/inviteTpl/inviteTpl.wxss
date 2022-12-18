@@ -1,0 +1,19 @@
+/* components/inviteTpl/inviteTpl.wxss */
+
+.invite-box{
+  padding: 20rpx 0;
+  background-color: #ffffff;
+  margin-top: 10rpx;
+  width: 100%;
+  border-radius:5rpx; 
+}
+
+.invite-list-title{
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+}
+
+.invite-list-user{
+  padding: 5rpx 0;
+}

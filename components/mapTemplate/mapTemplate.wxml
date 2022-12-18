@@ -19,9 +19,17 @@
                       </van-col>
 
                       <van-col custom-class= "court-title-right">
-                          <!-- <view class="coutr-collection-btn"><van-icon name="like-o" />收 藏</view> -->
-                          <view class="operator-btn">
-                          <van-icon name="like-o" /> 收 藏</view>
+                          <!-- <view class="coutr-collection-btn"><van-icon name="like-o" />已收藏</view> -->
+
+                          <navigator wx:if="{{item.collected}}" url="/pages/map/courtShow/courtShow?courtCode={{item.courtCode}}" hover-class="none">
+                            <view class="operator-tag">
+                                看详情 >
+                            </view>
+                          </navigator>
+
+                          <view wx:else class="operator-btn" bindtap="collectCourt" data-index="{{item}}">
+                              <van-icon name="like-o" />收 藏
+                          </view>
                       </van-col>
                   </van-row>
 

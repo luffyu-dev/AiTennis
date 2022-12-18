@@ -2,6 +2,7 @@
 // pages/user/user.js
 import { doLogin, getLoginUser , outLogin, isLogin} from '../../../utils/login'; 
 import {navigateBeforCheckLogin} from '../../../utils/util'; 
+import {queryUserTennisInfo,queryUserTennisDate} from '../../../utils/userTennis'; 
 
 Page({
  
@@ -38,7 +39,6 @@ Page({
           loginUserInfo: loginInfo
        });
        this.queryLoginUserAtData();
-       this.queryUserAtCalendar();
     }else{
        this.queryUnLoginAtData();
     }
@@ -79,54 +79,47 @@ Page({
 
   // 登录的用户数据查询
   queryLoginUserAtData: function() {
-    let _userData={
-      ntrp: "3.5",
-      tennisAge:{
-        yearData:5,
-        monthDate:3,
-      },
-      trainInfo:{
-        totalHours:9999,
-        weekHours:2
-      },
-      atData:{
-        foreHand:8,
-        backHand:7,
-        hitOut:5,
-        tennisFront:2,
-        cutting:5,
-      }
-    };
-
+    let params = {};
+    let _this = this;
+    queryUserTennisInfo(params,res=>{
+      let _tennisInfo = res.data.data;
+      // 能力矩阵图
+      let _levelMatrix = _tennisInfo.levelMatrix;
       let radarDataValue = [];
-      radarDataValue.push(_userData.atData.hitOut);
-      radarDataValue.push(_userData.atData.foreHand);
-      radarDataValue.push(_userData.atData.tennisFront);
-      radarDataValue.push(_userData.atData.cutting);
-      radarDataValue.push(_userData.atData.backHand);
+      radarDataValue.push(_levelMatrix.serve);
+      radarDataValue.push(_levelMatrix.foreHand);
+      radarDataValue.push(_levelMatrix.netFront);
+      radarDataValue.push(_levelMatrix.cutting);
+      radarDataValue.push(_levelMatrix.backHand);
       let _radarData = this.data.radarData;
       _radarData.data[0].value = radarDataValue;
-      this.setData({
+
+      // 网球日历
+      let _atCalendarInfo = {
+        spot : _tennisInfo.tennisDate
+      }
+      _this.setData({
         radarData: _radarData,
-        userAtData: _userData
-      }),
-      this.createUserRadar();
+        userAtData: _tennisInfo,
+        atCalendarInfo:_atCalendarInfo
+      })
+      _this.createUserRadar();
+    });
+    
     },
 
     /**未登录的用户数据查询 */
     queryUnLoginAtData:function (params) {
       let _userData={
         ntrp: "-",
-        tennisAge:{
-          yearData:0,
-          monthDate:0,
-        },
-        trainInfo:{
-          totalHours:0,
+        yearData:0,
+        monthDate:0,
+        userTrainInfo:{
+          allHours:0,
           weekHours:0
         }
       };
-      let radarDataValue = [0,0,0,0,0];
+      let radarDataValue = [0,1,0,0,0];
       let _radarData = this.data.radarData;
       _radarData.data[0].value = radarDataValue;
       this.setData({
@@ -146,7 +139,7 @@ Page({
 
     queryUserAtCalendar:function () {
         let _atCalendarInfo = {
-          spot :["2022/11/1","2022/11/10"]
+          spot :[]
         }
         this.setData({
           atCalendarInfo:_atCalendarInfo
@@ -156,6 +149,26 @@ Page({
     // 跳转方法
   navigateToCheckLogin: function(goUrl){
     navigateBeforCheckLogin(goUrl.currentTarget.dataset.src);
+  },
+
+  dateChange:function(event) {
+    let _detail = event.detail;
+    let _date = _detail.year + "/0" + (_detail.month + 1);
+    if ((_detail.month + 1) >= 10) {
+      _date = _detail.year + "/" + (_detail.month + 1);
+    }
+     let  param={};
+     param.recordDate = _date
+     queryUserTennisDate(param,res=>{
+        let _dateList = res.data.data ? res.data.data:[];
+        let _atCalendarInfo = {
+          spot : _dateList
+        }
+        console.log(_atCalendarInfo)
+        this.setData({
+          atCalendarInfo:_atCalendarInfo
+        })
+     })
   }
   
 })

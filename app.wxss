@@ -87,8 +87,8 @@ page {
 }
 
 .content-info-bg{
-  /* background-color: #005335; */
-  background: -webkit-linear-gradient(top,#005335,#005335,#fcfdfd);
+  background-color: #005335;
+  /* background: -webkit-linear-gradient(top,#005335,#005335,#fcfdfd); */
 }
 
 .top-bg-container{
@@ -263,7 +263,6 @@ page {
 
 .text-info-notes{
   font-size: 22rpx;
-  margin-left: 10rpx;
   color: #c2c7c5;
 }
 
@@ -306,6 +305,9 @@ page {
   border-radius: 18rpx;
   padding: 5rpx;
 }
+
+
+
 
 .operator-btn-finished{
   min-width: 100rpx;
@@ -378,4 +380,6 @@ page {
   width: 200rpx !important;
   margin-top: 5rpx;
 }
+
+
 

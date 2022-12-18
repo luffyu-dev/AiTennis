@@ -45,7 +45,8 @@ export function  doPost(serverName,url,data,event) {
         event(res);
       }else{
         wx.showToast({
-          title: '系统繁忙,请重试',
+          icon: 'error',
+          title: res.data.msg ? res.data.msg:'系统繁忙' ,
         })
       }
     }

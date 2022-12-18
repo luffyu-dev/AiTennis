@@ -1,15 +1,17 @@
 <!--index.wxml-->
-<view class="content-info-bg top-bg-container"/>
+<!-- <view class="content-info-bg top-bg-container"/> -->
 
-<scroll-view scroll-y class="scroll-y-container" enhanced="true"  showScrollbar="false">
+
+
+    <view class="content-info-bg user-data-header"/>
 
     <view class="box-card-full user-data-info">
-        <!-- 已登录 -->
+        <!-- 登录 -->
         <view wx:if="{{loginUserInfo && loginUserInfo.isLogin}}" class="user-basic-data">
             <view ><image src="{{loginUserInfo.avatarUrl}}" class="user-info-avatar"></image></view>
             <view bindtap="getUser">{{loginUserInfo.nickName}}</view>
         </view>
-        <!-- 没有登录 -->
+        <!-- 未登录 -->
         <view wx:else class="user-basic-data">
             <view v-else ><image src="/image/avator/default_avator.jpeg" class="user-info-avatar"></image></view>
             <view bindtap="inLogin">请登录</view>
@@ -26,23 +28,23 @@
               <view class="user-at-item">
                 <van-row custom-class="line-desc">网龄</van-row>
                 <van-row >
-                  <text class="line-data">{{userAtData.tennisAge.yearData}}</text>
+                  <text class="line-data">{{userAtData.yearDate}}</text>
                   <text class="line-desc">年</text>
-                  <text class="line-data">{{userAtData.tennisAge.monthDate}}</text>
+                  <text class="line-data">{{userAtData.monthDate}}</text>
                   <text class="line-desc">月</text>
                 </van-row>
               </view>
               <view class="user-at-item">
                 <van-row custom-class="line-desc">共训练</van-row>
                 <van-row >
-                  <text class="line-data">{{userAtData.trainInfo.totalHours}}</text>
+                  <text class="line-data">{{userAtData.userTrainInfo.allHours}}</text>
                   <text class="line-desc">h</text>
                 </van-row>
               </view>
               <view class="user-at-item">
                 <van-row custom-class="line-desc">本周训练</van-row>
                 <van-row >
-                  <text class="line-data">{{userAtData.trainInfo.weekHours}}</text>
+                  <text class="line-data">{{userAtData.userTrainInfo.weekHours}}</text>
                   <text class="line-desc">h</text>
                 </van-row>
               </view>
@@ -60,25 +62,25 @@
         <view class="box-card-title">常用功能</view>
         <van-row  >
           <van-cell custom-class="invite-info-cell" title="参与的邀约" icon="clock" is-link
-          bindtap="navigateToCheckLogin" data-src=""/>
+          bindtap="navigateToCheckLogin" data-src="/pages/invite/list/inviteList"/>
         </van-row>
         <van-row>
-          <van-cell custom-class="invite-info-cell" title="收藏的球场" icon="map-marked" is-link bindtap="navigateToCheckLogin" data-src="/pages/map/tennisMap/tennisMap"/>
+          <van-cell custom-class="invite-info-cell" title="收藏的球场" icon="map-marked" is-link bindtap="navigateToCheckLogin" data-src="/pages/map/tennisMap/tennisMap?collected=true"/>
         </van-row>
         <van-row>
-          <van-cell custom-class="invite-info-cell" title="关注的球员" icon="friends"  is-link bindtap="navigateToCheckLogin" data-src="/pages/atp/player/player"/>
+          <van-cell custom-class="invite-info-cell" title="关注的球员" icon="friends"  is-link bindtap="navigateToCheckLogin" data-src="/pages/atp/player/player?followed=true"/>
         </van-row>
         <van-row>
-          <van-cell custom-class="invite-info-cell" title="个人设置" icon="setting"  is-link />
+          <van-cell custom-class="invite-info-cell" title="个人设置" icon="setting"  is-link bindtap="navigateToCheckLogin" data-src=""/>
         </van-row>
         <van-row>
           <van-cell custom-class="invite-info-cell" title="关注公众号" icon="bookmark"   />
         </van-row>
-        <van-row>
+        <!-- <van-row>
           <van-cell custom-class="invite-info-cell" title="联系我们" icon="comment" />
-        </van-row>
+        </van-row>  -->
     </view>
 
-    <button class="basic_button_color outLogin-row" bindtap="outLogin">退出登录</button>
-
-</scroll-view>
+    <view class="outLogin-row">
+      <button class="basic_button_color" bindtap="outLogin">退出登录</button>
+    </view>

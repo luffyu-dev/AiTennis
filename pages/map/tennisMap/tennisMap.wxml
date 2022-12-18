@@ -1,47 +1,43 @@
 <!--pages/map/tennisMap/index.wxml-->
 <import src="/components/mapTemplate/mapTemplate.wxml"/>
-<view class="court-map-search">
-  <view>
-    <van-search
-      value="{{ value }}"
-      placeholder="请输入搜索关键词"
-      use-action-slot
-      bind:search="onSearchByKey">
-    </van-search>
+
+  
+  <view class="court-map-search-view">
+    <van-row>
+      <van-col custom-class="court-user-address" bindtap="getUserLocation">
+        <van-icon name="location" custom-class="icon"/>
+        <text wx:if="{{userLocation.isSucc}}">{{userLocation.district}}</text>
+        <text wx:else>定位中</text>
+      </van-col>
+      <van-col custom-class="court-map-search" > 
+        <van-search
+          value="{{ value }}"
+          placeholder="请输入搜索关键词"
+          use-action-slot
+          bind:search="onSearchByKey">
+        </van-search>
+      </van-col>
+    </van-row>
   </view>
-
-
-</view>
-<view class="court-map-info">
-  <map 
-    id="tennis_map_id"
-    class="map"
-    latitude="{{onLocation.latitude}}"
-    longitude="{{onLocation.longitude}}"
-    bindmarkertap="onMarkerTap"
-    bindcallouttap="onCalloutTap"
-    bindlabeltap="onLabelTap"
-    scale="13"
-  ></map> 
-  <view class="map-tennis-court-info">
+  <view class="court-map-info">
+    <map 
+      id="tennis_map_id"
+      class="map"
+      latitude="{{onLocation.latitude}}"
+      longitude="{{onLocation.longitude}}"
+      bindmarkertap="onMarkerTap"
+      bindcallouttap="onCalloutTap"
+      bindlabeltap="onLabelTap"
+      scale="13"
+    ></map> 
+    <view class="map-tennis-court-operator">
       <van-row >
-          <van-col custom-class="court-map-title">
-            <text class="map-court-title-info">网球场地图 </text>
-          </van-col>
-          <van-col custom-class="court-user-address" bindtap="getUserLocation">
-            <van-icon name="location" custom-class="icon"/>
-            <text wx:if="{{userLocation.isSucc}}">{{userLocation.province}}/{{userLocation.city}}/{{userLocation.district}}</text>
-            <text wx:else><van-icon name="location-o" custom-class="icon"/>定位中</text>
-          </van-col>
-
-          <van-col custom-class="court-map-report">
-            <navigator url="/pages/map/courtApply/courtApply"  hover-class="none">
-              <van-icon name="records" />球场上报
+            <navigator url="/pages/map/courtApply/courtApply"  hover-class="none" class="court-map-report">
+                  <van-icon name="label-o" />球场上报
             </navigator>
-        </van-col>
         </van-row> 
   </view>
-</view>
+  </view>
 
 <scroll-view scroll-y  class="court-map-view" enhanced="true"  showScrollbar="false" >
   <view>

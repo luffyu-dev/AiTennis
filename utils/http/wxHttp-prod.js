@@ -47,7 +47,7 @@ export function doPost(serverName,url,data,event){
     fail(res){
       console.log('>>>>>>>>>>>doPost fail')
       wx.showToast({
-        title: '请求异常',
+        title: res.data.msg ? res.data.msg:'系统繁忙' ,
         icon: 'error',
         duration: 1000//持续的时间
       })

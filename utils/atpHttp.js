@@ -2,7 +2,7 @@
 
 import {doPost} from './http/wxHttp-pre'; 
 // import {doPost} from './http/wxHttp-prod'; 
-
+import {isLogin,doLogin} from './login';
 
 // atp的排名信息搜索
 export function searchAtpRank(params,succEvent){
@@ -48,4 +48,50 @@ export function searchWtaPlayer(params,succEvent){
     params,
     succEvent
   )
+}
+
+
+
+
+// 关注球员
+export function follow(params,succEvent){
+  if(isLogin()){
+    doPost(
+      "at-atp-api",
+      "/at-api/player/follow",
+      params,
+      succEvent
+    )
+  }else{
+    doLogin(res=>{
+      doPost(
+        "at-atp-api",
+        "/at-api/player/follow",
+        params,
+        succEvent
+      )
+    })
+  }
+}
+
+
+// 取消关注
+export function unfollow(params,succEvent){
+  if(isLogin()){
+      doPost(
+        "at-atp-api",
+        "/at-api/player/unfollow",
+        params,
+        succEvent
+      )
+  }else{
+    doLogin(res => {
+      doPost(
+        "at-atp-api",
+        "/at-api/player/unfollow",
+        params,
+        succEvent
+      )
+    })
+  }
 }

@@ -1,7 +1,7 @@
 // pages/map/courtShow/courtShow.js
 
 import { getCourtInfo } from '../../../utils/mapHttp'; 
-import {openLocationMap} from '../../../utils/mapHttp'
+import {openLocationMap,collect,uncollect} from '../../../utils/mapHttp'
 
 
 Page({
@@ -59,4 +59,37 @@ Page({
       openLocationMap(defaultLBS);
     }
   },
+
+  /**
+    * 收藏球场
+    * @param {*} detail 
+    */
+   collectCourt(){
+    let params = {
+      courtCode: this.data.courtInfoDetail.courtCode
+    }
+    let _queryInfo = this.data.queryInfo;
+    collect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.getLoadCourtInfo(_queryInfo);
+      }
+    })
+  },
+
+  /**
+   * 不收藏球场
+   * @param {*} detail 
+   */
+  uncollectCourt(){
+    let params = {
+      courtCode: this.data.courtInfoDetail.courtCode
+    }
+    let _queryInfo = this.data.queryInfo;
+    uncollect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.getLoadCourtInfo(_queryInfo);
+      }
+    })
+  }
+
 })

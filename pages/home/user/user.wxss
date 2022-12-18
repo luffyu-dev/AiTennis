@@ -1,8 +1,13 @@
 /**index.wxss**/
 
-
+.heard-view{
+  height: 120rpx;
+}
+.user-data-header{
+  height: 130rpx;
+}
 .user-data-info{
-  margin-top: 50rpx;
+  margin-top: -50rpx;
   min-height: 260rpx;
 }
 .user-basic-data{
@@ -52,16 +57,17 @@
 }
 
 .outLogin-row{
-  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+  height: 150rpx;
 }
 
 .user-at-view{
   margin-top: 30rpx;
-  margin-left: 20rpx;
+  margin-left: 2%;
 }
 
 .user-at-info{
-  width: 52%;
+  width: 50%;
   min-height: 200rpx;
 }
 

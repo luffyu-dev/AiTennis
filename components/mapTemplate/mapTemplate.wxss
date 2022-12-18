@@ -63,3 +63,14 @@
   margin-right: 10rpx;
 }
 
+
+
+.operator-tag {
+  justify-content: space-between;
+  font-size: 23rpx;
+  line-height: 40rpx;
+  border-radius: 18rpx;
+  padding: 5rpx;
+  min-width: 80rpx;
+  text-align: right;
+}

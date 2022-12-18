@@ -1,0 +1,27 @@
+<!--pages/invite/list/inviteList.wxml-->
+
+<import src="/components/inviteTpl/inviteTpl.wxml"/>
+
+
+<view>
+  <van-tabs  active="{{ tab_active }}" bind:click="clickTabls" color="#ffffff" title-active-color="#ffffff" title-inactive-color="#efefef" nav-class="van-tabs-view">
+    <van-tab title="创建的邀约" name="0"></van-tab>
+    <van-tab title="参与的邀约" name="1"></van-tab>
+  </van-tabs>
+
+
+  <view class="search-view">
+    <van-search value="{{ searchValue }}" shape="round" placeholder="标题/球场" bind:search="startSearch" bind:clear="startSearch"/>
+  </view>
+
+
+  <view>
+      <template is="INVITE_LIST" data="{{inviteList}}"></template>
+  </view>
+
+
+  <van-row custom-class="loading-search">
+        <van-loading wx:if="{{isLoading}}" size="24px">加载中...</van-loading>
+  </van-row>
+
+</view>

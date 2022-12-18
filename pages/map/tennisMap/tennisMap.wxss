@@ -8,13 +8,27 @@
   height: 520rpx;
 }
 
-.court-map-search{
+.court-map-search-view{
   position: absolute; 
   width: 100%;
-  height:80rpx;
+  height:100rpx;
   z-index:600;
   background-color: white
 }
+
+.court-user-address{
+  padding: 20rpx 10rpx;
+  width: 20%;
+  color: #9a9e9c;
+  line-height: 60rpx;
+}
+
+
+.court-map-search{
+  width: 80%;
+}
+
+
 
 .court-map-info{
   position: absolute; 
@@ -28,7 +42,7 @@
   z-index:300;
   width: 100%;
   height: 52%;
-  margin-top: 680rpx;
+  margin-top: 660rpx;
 }
 
 .map-tennis-court-info{
@@ -37,19 +51,27 @@
   background-color: white;
 }
 
+.map-tennis-court-operator{
+  width: 100%;
+  line-height: 40rpx;
+  background-color: white;
+  text-align: right;
+  padding: 10rpx;
+}
+
 .court-map-title{
   width: 28%;
   font-size: 35rpx;
   font-weight: bold;
 }
-.court-user-address{
-  width: 45%;
-  color: #9a9e9c;
 
-}
+
 .court-map-report{
-  width: 25%;
-  text-align: right;
+    color: #9a9e9c;
+    display: inline-block;
+    padding: 5rpx;
+    font-size: 28rpx;
+    margin-right: 10rpx;
 }
 
 .map-court-title-info{

@@ -1,6 +1,7 @@
 import {doPost} from './http/wxHttp-pre'; 
 // import {doPost} from './http/wxHttp-prod'; 
 
+import {isLogin,doLogin} from './login';
 
 
 var QQMapWX = require('./../components/qqmapjs/qqmap-wx-jssdk.js');
@@ -26,6 +27,52 @@ export function getCourtInfo(params,succEvent){
     params,
     succEvent
   )
+}
+
+
+// 收藏场地
+export function collect(params,succEvent){
+  console.log("collect>>>>>"+isLogin);
+  if (isLogin()) {
+    doPost(
+      "at-map-api",
+      "/at-api/tennis-court/collect",
+      params,
+      succEvent
+    )
+  }else{
+    doLogin(res=>{
+      doPost(
+        "at-map-api",
+        "/at-api/tennis-court/collect",
+        params,
+        succEvent
+      )
+    })
+  }
+}
+
+
+// 取消收藏场地
+export function uncollect(params,succEvent){
+  if (isLogin()) {
+    doPost(
+      "at-map-api",
+      "/at-api/tennis-court/uncollect",
+      params,
+      succEvent
+    )
+  }else{
+      doLogin(res=>{
+        doPost(
+          "at-map-api",
+          "/at-api/tennis-court/uncollect",
+          params,
+          succEvent
+        )
+      })
+  }
+
 }
 
 

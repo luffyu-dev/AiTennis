@@ -1,0 +1,8 @@
+/* pages/invite/list/inviteList.wxss */
+
+@import "/components/inviteTpl/inviteTpl.wxss";
+
+.van-tabs-view{
+  background-color: #005335;
+  color: #ffffff;
+}

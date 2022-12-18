@@ -1,0 +1,31 @@
+<!--components/inviteTpl/inviteTpl.wxml-->
+<template name="INVITE_LIST">
+
+    <van-row wx:for="{{inviteList}}" wx:key="*this" custom-class="invite-box">
+          <van-col custom-class="box-left-image">
+              <image src="{{item.inviteHomeImg}}" mode="aspectFill" class="box-left-image-info"></image>
+          </van-col>
+          <van-col custom-class="box-right-info ">
+         <!-- "/pages/invite/show/inviteShow?inviteCode="+code -->
+              <van-row custom-class="invite-list-title">
+                <navigator url="{{'/pages/invite/show/inviteShow?inviteCode='+item.inviteCode}}"  hover-class="none">
+                  {{item.inviteTitle}}
+                </navigator>
+              </van-row>
+              <van-row custom-class="text-info-notes invite-list-user">
+                <van-icon name="friends" /> : {{item.joinNumber ? item.joinNumber : 0}}/{{item.inviteNumber}}
+              </van-row>
+
+              <van-row wx:if="{{item.startEndTimeDesc}}" custom-class="text-info-notes invite-list-user">
+                <van-icon name="clock-o" /> : {{item.startEndTimeDesc}}
+              </van-row>
+
+              <van-row wx:if="{{item.courtAddress}}"  custom-class="text-info-notes invite-list-user">
+                <van-icon name="location-o" /> : {{item.courtAddress}}
+              </van-row>
+           
+          </van-col>
+
+
+    </van-row>
+</template>

@@ -12,7 +12,10 @@
                   <van-col custom-class="row_player_name_title_name">{{item.chinaFullName}}</van-col>
                   <van-col custom-class="row_player_name_title_button">
                       <!-- + 关注 -->
-                      <view class="operator-btn">
+                      <view wx:if="{{item.followed}}" class="operator-btn" bindtap="unfollowPlayer" data-index="{{index}}" data-player="{{item}}">
+                        已关注
+                      </view>
+                      <view wx:else class="operator-btn" bindtap="followPlayer" data-index="{{index}}" data-player="{{item}}">
                           <van-icon name="plus" />关 注
                       </view>
                   </van-col>
@@ -27,14 +30,14 @@
 
           <van-row custom-class="row_player_career">
             <van-col custom-class="row_player_career_title" >
-                <view wx:if="{{item.rank}}">
+                <view wx:if="{{item.weekRankInfo}}">
                     <van-row custom-class="player_top_desc">本周排行</van-row>
-                    <van-row wx:if="{{item.rank < 100}}" custom-class="player_top_desc">
-                      NO.<text class="player_top_data">{{item.rank}}</text>
+                    <van-row wx:if="{{item.weekRankInfo.rank < 100}}" custom-class="player_top_desc">
+                      NO.<text class="player_top_data">{{item.weekRankInfo.rank}}</text>
                     </van-row>
                     <van-row wx:else>
                         <van-row custom-class="player_top_desc">No.</van-row>
-                        <van-row custom-class="player_top_data">{{item.rank}}</van-row>
+                        <van-row custom-class="player_top_data">{{item.weekRankInfo.rank}}</van-row>
                     </van-row>
                 </view>
             </van-col>

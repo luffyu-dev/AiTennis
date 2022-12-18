@@ -3,6 +3,20 @@ import {doPost} from './http/wxHttp-pre';
 
 
 
+
+// 我的邀约信息
+export function queryUserInviteList(params,succEvent){
+  console.log("searchAtpRank>>>>>params");
+  doPost(
+    "at-atp-api",
+    "/at-api/invite/query/user-list",
+    params,
+    succEvent
+  )
+}
+
+
+
 // atp的排名信息搜索
 export function applyInvite(params,succEvent){
   console.log("searchAtpRank>>>>>params");
@@ -13,6 +27,7 @@ export function applyInvite(params,succEvent){
     succEvent
   )
 }
+
 
 
 

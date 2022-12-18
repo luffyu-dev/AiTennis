@@ -71,14 +71,14 @@
   color: white;
   min-height: 100rpx;
   text-align: right;
-  box-shadow: -2px 2px 3px 1px #cdcfcf
+  /* box-shadow: -2px 2px 3px 1px #cdcfcf */
 }
 .invite-info-state view{
    width: 30 rpx;
    padding: 15rpx;
    height: 100rpx;
    background-color: #005335;
-   box-shadow: -2px 2px 3px 1px #cdcfcf
+   /* box-shadow: -2px 2px 3px 1px #cdcfcf */
 }
 
 .invite-main-user-avatar{

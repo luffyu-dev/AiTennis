@@ -1,5 +1,6 @@
 import {navigateBeforCheckLogin} from '../../../utils/util'; 
-import { searchByRegion,getNowUserLocation } from '../../../utils/mapHttp'; 
+import { searchByRegion,getNowUserLocation,collect,uncollect } from '../../../utils/mapHttp'; 
+
 
 
 // pages/match/match.js
@@ -141,7 +142,7 @@ Page({
         console.log(res);
         let result = res.data;
         if(result.code === "1000000"){
-          let list = result.data;
+          let list = result.data.records;
           _this.setData({
             tennisCourtList : list,
             isCourtLoading : false
@@ -185,5 +186,43 @@ Page({
       }),
       this.queryTennisCourt(res);
     });
- }
+ },
+
+ /**
+  * 收藏球场
+  * @param {*} detail 
+  */
+  collectCourt(detail){
+    let _courtInfo = detail.currentTarget.dataset.index;
+    console.log(detail);
+    let params = {
+      courtCode: _courtInfo.courtCode
+    }
+    let _userLocation = this.data.userLocation;
+    collect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.queryTennisCourt(_userLocation);
+      }
+    })
+  },
+
+  /**
+   * 不收藏球场
+   * @param {*} detail 
+   */
+  uncollectCourt(detail){
+    console.log("uncollectCourt>>>>>>" );
+    let _courtInfo = detail.currentTarget.dataset.index;
+    let params = {
+      courtCode: _courtInfo.courtCode
+    }
+    let _userLocation = this.data.userLocation;
+    uncollect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.queryTennisCourt(_userLocation);
+      }
+    })
+  }
+
+
 })

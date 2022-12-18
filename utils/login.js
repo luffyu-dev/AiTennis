@@ -21,11 +21,10 @@ export function doLogin(successEvent){
           loginUserInfo.accountType = 4;
           loginUserInfo.isLogin = true;
           console.log(">>>>>>>>>>>>>loginUserInfo-inir");
-          console.log(loginUserInfo);
-          // 采用双写的
-          wx.setStorageSync('loginUserInfo', loginUserInfo);
-          successEvent(loginUserInfo);
-          // 采用双写的
+          wx.showLoading({
+            title: '登录中',
+            duration: 10000
+          });
           doAtLogin(
             loginUserInfo,
             (res => {
@@ -37,16 +36,16 @@ export function doLogin(successEvent){
                   loginUserInfo.uid = data.uid;
                   loginUserInfo.sessionKey = data.sessionKey;
                   wx.setStorageSync('loginUserInfo', loginUserInfo);
-                  wx.setStorageSync('login-Cookie', 'Login-Token=' + loginUserInfo.sessionKey)
-                  console.info(">>>>>>setsuccess" )
-                  console.info(wx.getStorageSync('loginUserInfo') )
+                  wx.setStorageSync('login-Cookie', 'Login-Token=' + loginUserInfo.sessionKey);
+
+                  wx.hideLoading();
+                  wx.showToast({
+                    title:'登录成功' ,
+                  });
                   successEvent(loginUserInfo);
                 }
             })
           );
-          // 采用双写的
-          wx.setStorageSync('loginUserInfo', loginUserInfo);
-          successEvent(loginUserInfo);
         },
         fail:(loginRes)=>{
 
@@ -73,8 +72,12 @@ export function isLogin(){
 
 // 退出登录
 export function outLogin(successEvent){
-   wx.setStorageSync('loginUserInfo', null)
-   wx.setStorageSync('login-Cookie', null)
+   wx.setStorageSync('loginUserInfo', null);
+   wx.setStorageSync('login-Cookie', null);
+   wx.showToast({
+    title:'已退出登录' ,
+    duration: 500//持续的时间
+  });
    successEvent();
 }
 

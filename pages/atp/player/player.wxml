@@ -4,7 +4,7 @@
 
 <view>
 
-  <van-tabs active="{{ tab_active }}" bind:click="clickTabls" color="#ffffff" title-active-color="#ffffff" title-inactive-color="#efefef" nav-class="van-tabs-view">
+    <van-tabs wx:if="{{!followed}}" active="{{ tab_active }}" bind:click="clickTabls" color="#ffffff" title-active-color="#ffffff" title-inactive-color="#efefef" nav-class="van-tabs-view">
       <van-tab title="ATP球员资料" name="atp"></van-tab>
       <van-tab title="WTA球员资料" name="wta"></van-tab>
     </van-tabs>
@@ -23,6 +23,11 @@
           <van-loading wx:if="{{isLoading}}" size="24px">加载中...</van-loading>
     </van-row>
 </view>
+
+
+
+
+
 
 
 <wxs module="js">

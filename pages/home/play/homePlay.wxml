@@ -101,7 +101,11 @@
   <view class="box-card" >
     <van-row>
       <van-col custom-class="my-map-title ">
-        <view class="box-card-title">附近球场</view>
+        <view class="box-card-title">
+          <navigator url="/pages/map/tennisMap/tennisMap"  hover-class="none">
+              附近球场
+          </navigator>
+        </view>
       </van-col>
       <van-col custom-class="my-map-area" bindtap="getUserLocation">
         <van-icon name="location-o" custom-class="icon"/>

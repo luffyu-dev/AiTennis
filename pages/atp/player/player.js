@@ -1,7 +1,7 @@
 // pages/atp/player/player.js
 
 
-import { searchWtaPlayer, searchAtpPlayer} from '../../../utils/atpHttp'; 
+import { searchWtaPlayer, searchAtpPlayer,follow,unfollow} from '../../../utils/atpHttp'; 
 
 
 Page({
@@ -16,7 +16,21 @@ Page({
       nowSearchPage:1,
       searchValue:"",
       playerList:[],
+      followed:false
 
+  },
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    console.log(options);
+    if (options.followed) {
+        this.setData({
+          followed: options.followed
+        })
+    }
   },
 
 
@@ -27,6 +41,8 @@ Page({
     this.queryPlayerList(this.data.nowSearchPage,this.data.searchValue);
   },
  
+
+  
 
   /**
    * 页面上拉触底事件的处理函数
@@ -69,6 +85,8 @@ Page({
     let params = {};
     params.page = page ? page : 1;
     params.searchValue = searchValue? searchValue : "";
+    params.justFollow = this.data.followed;
+
     let _playerList = this.data.playerList;
     let _active_tab_name = this.data.active_tab_name;
     _this.setData({
@@ -79,12 +97,14 @@ Page({
         let result = res.data;
         if(result.code === "1000000"){
           let list = result.data.records;
-          for (let index = 0; index < list.length; index++) {
+          if (list) {
+            for (let index = 0; index < list.length; index++) {
               let x = list[index];
               this.createAge(x);
               this.initTags(x);
               _playerList.push(x);
-          };
+            };
+          }
           _this.setData({
             playerList : _playerList,
             isLoading : false
@@ -96,12 +116,14 @@ Page({
             let result = res.data;
             if(result.code === "1000000"){
               let list = result.data.records;
-              for (let index = 0; index < list.length; index++) {
-                let x = list[index];
-                this.createAge(x);
-                this.initTags(x);
-                _playerList.push(x);
-              };
+              if (list) {
+                for (let index = 0; index < list.length; index++) {
+                  let x = list[index];
+                  this.createAge(x);
+                  this.initTags(x);
+                  _playerList.push(x);
+                };
+              }
               console.log(">>>>>>>>>>>_playerList");
               console.log(_playerList);
               _this.setData({
@@ -137,7 +159,47 @@ Page({
     playerInfo.birthdayStr = birthdayDate[0]+"/"+birthdayDate[1]+"/"+birthdayDate[2];
     playerInfo.age = age;
     playerInfo.isBirthday = (todayMonth == birthdayDate[1] && todayDay == birthdayDate[2])
-  }
+  },
 
+  /**
+   * 关注球员
+   */
+  followPlayer(detail){
+    let _playerInfo = detail.currentTarget.dataset.player;
+    let _index = detail.currentTarget.dataset.index;
+    let param = {
+      playerId:_playerInfo.playerId
+    }
+    const _followed = "playerList[" + _index + "].followed";
+    let _this = this;
+    follow(param,res=>{
+      if (res.data.code === "1000000") {
+        _this.setData({
+          [_followed]:true
+        })
+      }
+    })
+  },
+
+   /**
+   * 关注球员
+   */
+  unfollowPlayer(detail){
+    console.log(detail);
+    let _playerInfo = detail.currentTarget.dataset.player;
+    let _index = detail.currentTarget.dataset.index;
+    const _followed = "playerList[" + _index + "].followed";
+    let _this = this;
+    let param = {
+      playerId:_playerInfo.playerId
+    }
+    unfollow(param,res=>{
+      if (res.data.code === "1000000") {
+        _this.setData({
+          [_followed]:false
+        })
+      }
+    })
+  }
 
 })

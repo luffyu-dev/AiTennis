@@ -1,5 +1,5 @@
 // pages/map/courtShow/index.js
-import { searchByRegion,getNowUserLocation } from '../../../utils/mapHttp'; 
+import { searchByRegion,getNowUserLocation,collect,uncollect } from '../../../utils/mapHttp'; 
 
 
 const img = '/image/logo/location.png'
@@ -22,6 +22,7 @@ Page({
     tennisCourtList: [],
     // 地图搜索的loading
     isCourtLoading: false,
+    justCollect: false,
 
     search_choice:{
         default_region:'宝安区',
@@ -45,8 +46,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log(options);
     this.mapCtx = wx.createMapContext('tennis_map_id')
-
+    if (options.collected) {
+        this.setData({
+          justCollect: options.collected
+        })
+    }
   },
 
   /**
@@ -112,6 +118,9 @@ Page({
     console.log("queryTennisCourt");
     params['district']='';
     console.log(params);
+    if (this.data.justCollect) {
+      params['justCollect']=true;
+    }
     let _this = this;
     _this.setData({
       isCourtLoading: true
@@ -120,7 +129,7 @@ Page({
         console.log(res);
         let result = res.data;
         if(result.code === "1000000"){
-          let list = result.data;
+          let list = result.data.records;
           let markPositions = [];
           for (let index = 0; index < list.length; index++) {
             let x = list[index];
@@ -224,6 +233,10 @@ Page({
       })
   },
 
+  /**
+   * 搜索场地
+   * @param {} operator 
+   */
   onSearchByKey(operator){
       let _this = this;
       let _searchValue = operator.detail;
@@ -237,6 +250,45 @@ Page({
           this.addUserMark(res);
       });
       console.log(operator)
+  },
+
+
+
+  /**
+    * 收藏球场
+    * @param {*} detail 
+    */
+  collectCourt(detail){
+    let _courtInfo = detail.currentTarget.dataset.index;
+    console.log(detail);
+    let params = {
+      courtCode: _courtInfo.courtCode
+    }
+    let _userLocation = this.data.userLocation;
+    collect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.queryTennisCourt(_userLocation);
+      }
+    })
+  },
+
+  /**
+   * 不收藏球场
+   * @param {*} detail 
+   */
+  uncollectCourt(detail){
+    console.log("uncollectCourt>>>>>>" );
+    let _courtInfo = detail.currentTarget.dataset.index;
+    let params = {
+      courtCode: _courtInfo.courtCode
+    }
+    let _userLocation = this.data.userLocation;
+    uncollect(params,res=>{
+      if (res.data.code === "1000000") {
+        this.queryTennisCourt(_userLocation);
+      }
+    })
   }
+
 
 })

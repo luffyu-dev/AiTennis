@@ -42,14 +42,15 @@
     </view>
 
     <view class="option-view-o">
-        <view class="option-1">
+        <view wx:if="{{courtInfoDetail.collected}}" class="option-1" bindtap="uncollectCourt">
+              <van-row> <van-icon name="star" /></van-row>
+              <van-row> 已收藏 </van-row>
+        </view>
+        <view wx:else="" class="option-1" bindtap="collectCourt">
               <van-row> <van-icon name="star-o" /></van-row>
               <van-row> 收藏 </van-row>
         </view>
-        <!-- <view class="option-1" bindtap="onShareAppMessage">
-              <van-row> <van-icon name="share" /></van-row>
-              <van-row> 分享 </van-row>
-        </view> -->
+    
         <view class="option-1" bindtap="onShareAppMessage">
               <button class="option-2" open-type="share">
                 <view><van-icon name="share" /></view>
